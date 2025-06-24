@@ -1,0 +1,22 @@
+Entrevista 1: Guilherme (Gerente de Logística)
+--------------------------------------------------
+Pergunta: Quais desafios você enfrenta no seu trabalho que poderiam ser solucionados com sistemas de imagem ou visão computacional 3D?
+Resposta: No nosso armazém, rastrear a localização exata e o volume dos pacotes é um desafio. Erros no empilhamento ou localização causam atrasos e riscos de segurança. Um sistema que mapeasse automaticamente a posição 3D de cada pacote em tempo real ajudaria a otimizar o espaço, melhorar a segurança e reduzir o tempo de busca.
+
+Pergunta: Como vocês solucionam esses problemas atualmente?
+Resposta: Usamos escaneamento manual e mapas em papel, que são propensos a erros e consomem muito tempo.
+
+Pergunta: Você estaria aberto ao uso de câmeras e visão computacional para isso?
+Resposta: Com certeza, desde que a privacidade e a segurança dos dados sejam garantidas.
+
+
+Entrevista 2: Victor Hugo (Supervisor de Obras)
+----------------------------------------------
+Pergunta: Quais problemas reais na sua área poderiam se beneficiar de sistemas de visão 3D?
+Resposta: Monitorar a segurança dos trabalhadores e o posicionamento de equipamentos é difícil em grandes obras. Às vezes, equipamentos ficam em áreas inseguras ou trabalhadores entram em zonas restritas.
+
+Pergunta: Como vocês monitoram essas situações atualmente?
+Resposta: Usamos supervisores andando pela obra e listas de verificação manuais, o que nem sempre é eficaz.
+
+Pergunta: Um sistema baseado em câmeras que acompanhasse pessoas e equipamentos em 3D ajudaria?
+Resposta: Sim, poderia melhorar a segurança e a eficiência, desde que respeite a privacidade dos trabalhadores.

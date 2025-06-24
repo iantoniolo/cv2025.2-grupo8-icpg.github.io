@@ -1,0 +1,423 @@
+ESZA019 – Visão Computacional
+
+ESPECIFICAÇÃO e INSTRUÇÕES do TRABALHO
+1.
+
+Junho.2025
+
+Objetivos
+
+- Realizar o trabalho em equipe de 3 (três) alunos.
+- O tema do trabalho será baseado no levantamento de problemas reais em entrevistas
+empáticas com pessoas externas.
+- Cada equipe deverá propor solucionar um desses problemas levantados, definindo o
+cenário de aplicação e o tema do trabalho.
+Objetivos específicos:
+1) Aplicar os conceitos de visão computacional da disciplina.
+2) Desenvolver um “Sistema” para aplicação interativa prática.
+3) Executar o “Sistema” na forma de laboratório experimental, com público externo.
+
+2.
+
+Introdução
+
+O Trabalho da disciplina de Visão Computacional consistirá de um Sistema de
+Processamento Visual. Este sistema deverá ser desenvolvido em linguagem Python com a
+API OpenCV.
+Esta especificação a seguir apresenta as metas e os requisitos do trabalho, bem
+como as instruções e regras das atividades.
+(A) O trabalho deverá propor um Contexto e Cenário de Aplicação (CA) original, baseado
+totalmente em entrevistas empáticas com o público externo.
+(B) O objetivo da elaboração do sistema será abordar uma análise de cenas visuais para
+obtenção de informações ou características da cena e seus objetos; ou o
+processamento visual, para realizar efeitos no video/imagem como transformações ou
+inserções. Este objetivo deverá propor uma solução de tarefas e problemas reais, de
+forma original e criativa, ou propor uma abordagem didática para atividade de ensino.
+(C) O trabalho deverá implementar e aplicar todos conceitos de visão computacional
+abordados nesta disciplina.
+(D) Os próprios alunos deverão realizar todas atividades do trabalho e do desenvolvimento
+indicadas. Ou seja, não só o trabalho final, mas também o processo e a evolução serão
+avaliados. No Seminário da Disciplina é imprescindível a apresentação de todos
+membros da equipe de trabalho.
+(E) Nos slides do Seminário deverá conter um logotipo da UFABC.
+https://www.ufabc.edu.br/administracao/aci/programacao-visual/manual-de-identidade-visualda-ufabc
+(F) Os seguintes conceitos da disciplina devem ser abordados no trabalho, na
+implementação do programa:
+
+i. Obrigatórios
+
+
+
+
+
+
+Filtragem de imagens
+Transformações geométricas
+Calibração de câmeras
+Propriedades Intrinsecas e extrinsecas
+
+ii. Pelo menos um item
+
+
+
+
+
+
+Estereoscopia
+Profundidade
+Reconhecimento
+Rastreamento
+
+(G) A “Aplicação” desenvolvida no projeto deverá permitir alguma medida ou métrica de
+desempenho, tais como o resultado de qualidade visual objetivo (p.ex.PSNR ou
+subjetivo (opinião subjetiva), acurácia de acertos, obtenção de informações etc. A
+influência da iluminação da cena também poderá ser analisada.
+
+3.
+
+Atividades do Trabalho
+O trabalho consistirá das etapas mostradas na Tabela 1 abaixo:
+
+Tabela 1: Etapas do trabalho de Processamento Digital de Imagens.
+ETAPA
+
+Entrega
+
+Descrição
+
+1
+
+18.Junho.2025 Etapa 1: Contexto e Cenário de Aplicação (CA)
+
+2
+
+25.Junho.2025 Etapa 2: Modelagem Funcional do Sistema (MF)
+
+3
+
+02.Julho.2025 Etapa 3: Seminário S1 dos Trabalhos - Apresentação
+
+4
+
+30.Julho.2025 Etapa 4: Desenvolvimento Sistema de Processamento Visual (SPV)
+
+5
+
+06.Ago.2025
+
+Etapa 5: Desenvolvimento do Laboratório Experimental (LEx)
+
+6
+
+11.Ago.2025
+
+Etapa 6: Teste de Campo do SPV (TC)
+
+7
+
+13.Ago.2025
+
+Etapa 7: Relatório Final do Trabalho (RFT)
+
+8
+
+18.Ago.2025
+
+Etapa 8: Seminário S2 dos Trabalhos - Apresentação
+
+DOCUMENTAÇÃO:
+As entregas das etapas deverão ser elaboradas em formato html (no github). A
+apresentação no seminário poderá ser feito em formato de apresentação pptx.
+Atenção, todos os documentos deverão constar o Nome da Equipe, Nome Completo
+de todos Integrantes, Data de Publicação, e o Título do Trabalho.
+
+4.
+
+Atividades do Trabalho
+O trabalho consistirá das seguintes etapas:
+Etapa 1: Contexto e Cenário de Aplicação (CA)
+Etapa 2: Modelagem Funcional do Sistema de Processamento Visual (MF)
+Etapa 3: Apresentação no Seminário Final da Disciplina (SEMINAR).
+Etapa 4: Desenvolvimento do Sistema de Processamento da Visão (SPV)
+Etapa 5: Elaboração de Laboratorio Experimental do SPG (LEx)
+Etapa 6: Teste de Campo do SPV (TC)
+Etapa 7: Elaboração do Relatório Final do Trabalho (RFT), Elaboração de
+Apresentação – ppt, videos documentais, e demo final. (DEM)
+Etapa 8: Apresentação no Seminário Final da Disciplina (SEMINAR).
+
+5. Etapa 1: Elaboração do Contexto e Cenário de Aplicação (CA)
+++++++++++ TEMA DO TRABALHO ++++++++++
+As equipes deverão apresentar temas de trabalho distintos entre si, não serão aceitos
+temas iguais ou similares; nem similares a trabalhos de anos anteriores. Temas
+interdisciplinares são incentivados e os mais encorajados para o trabalho. O tema do
+trabalho a ser desenvolvido deverá ser baseado em Entrevistas Empáticas.
+Com todos membros da equipe, cada um deverá entrevistar pelo menos duas
+pessoas de forma presencial, a respeito de demandas específicas/importante para elas, de
+análise de cenas visuais ou de processamento visual. com uso de camera(s) - para
+aplicação ao público, ou educacional, ou de empresa. Em geral as entrevistas serão fora da
+UFABC, mas podendo ser de forma remota também por videochamada.
+Na documentação, apresentar estas entrevistas de forma comprovada com fotos etc,
+fazer um resumo com a Identificação (nome, idade, profissão, relação com o entrevistador)
+de cada entrevistado.
+Entrevistas Empáticas poderá ter como público-alvo:
+(1) Entrevistas com pessoas externas: Entrevistar pessoa externa – maior de idade,
+sem nenhum tipo de vinculo com a UFABC, nem do meio acadêmico ou científico. Portanto,
+exclui-se alunos de graduação ou pos-graduação, docentes universitários, e membros de
+institutos de pesquisa.
+(2) Entrevistas com docentes internos ou externos, visando sistemas para fins
+didáticos inovadores com uso de câmera(s): Entrevistar docentes, interno da UFABC, ou
+docente externo do ensino fundamental / ensino médio. Neste caso, a finalidade da
+entrevista seria entender a demanda de ferramentas didáticas para a explicação e
+comunicação visual de fenômenos ou de resultados.
+Atenção: Para este caso de ferramenta didática, o tema não poderá abordar qualquer
+teoria sobre o processamento de imagens e de vídeo, computação gráfica, visão
+computacional, e afins. Além disso, os docentes da UFABC a serem entrevistados não
+poderão ser integrantes dos cursos de Eng. de Informação, Eng. IAR, Ciencia da
+Computação, ou da área de imagens da Eng. Biomédica.
+Após a realização de todas entrevistas empáticas, cada equipe deverá realizar o
+processo de decisão do tema, relatando o processo de decisão da aplicação do trabalho
+através de justificativas. Nas justificativas deverão constar referências como pesquisa de
+produtos similares, ou pesquisa de mercado, ou de artigos tecnicos sobre o tema.
+
+++++++++++ CONTEXTO E CENÁRIO DE APLICAÇÃO ++++++++++
+Cada equipe deverá propor um contexto e cenário de aplicação sobre o tema do
+trabalho, documentando esta proposta na pagina de documentação da equipe. Assim,
+neste Contexto e Cenário de Aplicação do trabalho deverá apresentar de forma geral:
+
+
+O problema a ser abordado, seu contexto, e sua justificativa e motivação.
+
+
+
+O objetivo do sistema, o que será o resultado final para o usuário leigo.
+
+
+
+Como se usa o sistema. (Qual o tipo de interatividade do usuário)
+
+
+
+Qual o benefício do sistema ao usuário?
+
+6. Etapa 2: Modelagem Funcional do Sistema (MF)
+No documento de MODELAGEM FUNCIONAL a ser entregue, o CENÁRIO do
+trabalho deverá ser detalhado quanto à concepção funcional do programa, de modo
+representar o que será implementado pela equipe durante o desenvolvimento do sistema de
+processamento da visão.
+A Modelagem Funcional deverá apresentar diagramas de blocos, fluxogramas, grafos,
+etc, que auxiliem no entendimento da composição das partes do modelo e cena a serem
+desenvolvidos, da animação, dos processos auxiliares envolvidos entre outras coisas.
+Cada bloco deverá ser descrito quanto à informação de entrada, a informação de
+saída, e o processamento realizado pelo bloco.
+
+7. Etapa 4: Desenvolvimento do Sistema de Processamento da Visão (SPV)
+A implementação do sistema SPV deverá atender às seguintes condições:
+
+
+
+
+
+
+
+
+
+
+
+O programa deverá utilizar a API OpenCV.
+Deverá ser executado no sistema operacional Ubuntu-linux do laboratório
+didático e utilizar a webcam do laboratório.
+Deverá ser feito pelos próprios alunos de cada equipe, não sendo permitido
+utilização de trabalhos feitos por outras pessoas nem por geração de IA.
+O programa poderá utilizar bibliotecas de processamento visual, desde que
+tenham reconhecimento notório e sejam gratuitas e disponíveis para utilização
+pública.
+O programa deverá realizar cálculos “on-the-fly” da teoria abordada ou do
+modelo matemático adotado, para apresentar a visualização do video ou da
+imagem.
+Importante: em todos os arquivos de código deverá ser feito um cabeçalho (com
+comentários) colocando o nome completo, RA, data do programa, nome do
+programa, e exemplo de chamada do programa no prompt do Linux.
+Além disso, no TÍTULO das janelas que o programa irá gerar na tela do
+computador, coloque o título do programa e o NOME DA EQUIPE.
+O sistema SPV desenvolvido deverá atender todas as demandas e necessidades
+previstas pelo Contexto e Cenário de Aplicação (CA).
+O sistema SPV deverá permitir que usuários (leigos) possam executar o
+programa e visualizar e coletar os resultados obtidos pela execução da(s)
+tarefa(s) do SPV.
+
+8. Etapa 5: Elaboração do Laboratorio Experimental do SPV (Lex)
+A elaboração do Laboratorio Experimental do SPV (Lex) será a proeparação do
+Teste de Campo (TC) do Sistema de Processamento da Visual.
+
+Roteiro do Laboratorio Experimental: Para cada aplicação proposta deverá
+elaborar um roteiro de procedimento experimental com instruções claras e detalhadas
+para o usuário executar o sistema e coletar resultados. Assim, poderá haver mais de
+um roteiro para o mesmo sistema SPV.
+
+
+Introdução (no roteiro): Explicação do funcionamento do sistema, através de
+suas telas e interfaces de entrada/saída; ou seja como um usuário leigo poderá
+operar o sistema.
+
+
+
+Procedimento experimental: elaborar com instruções claras e detalhadas para o
+usuário executar o sistema e coletar resultados O roteiro pode conter figuras,
+imagens que esclareçam o procedimento e o tipo de resultados esperados.
+
+
+
+Questionário: a equipe deverá elaborar um questionário, consistindo de conjunto
+de questões e perguntas para o usuário responder em relação aos experimentos
+realizados, de modo a avaliar se o usuário: (i) entendeu o assunto do tema
+através do experimento; (ii) obteve resultados esperados; (iii) entedeu a
+aplicação do sistema; etc.
+
+
+
+Obs.: Para cada questão respondida pelo usuário deverá ser possível atribuir
+uma nota. A equipe poderá calcular manualmente a média das notas de cada
+usuário, e colocar numa planilha excel/office. A equipe deverá enviar a planilha
+de média das notas pelo Moodle, após a realização do Teste de Campo do SPG.
+
+Além disso, sugerimos a elaboração de uma Enquete Subjetiva de Opinião (ESO) para o
+usuário que realizou o experimento, com perguntas sobre a sua opinião em relação ao
+Sistema. Deverá ter dois tipos de perguntas: (a) com respostas escritas; e (b) com
+respostas em escala 1~5. Uma análise desta enquete deverá constar no relatório final do
+trabalho, juntamente com a análise das notas alcançadas no teste de campo.
+
+9. Etapa 6: Teste de Campo do SPV (TC)
+O Teste de Campo – TC consiste na realização do Laboratório Experimental do SPV
+previsto com usuários leigos convidados e demais alunos da turma. A equipe deverá
+realizar com um número significativo de usuários, podendo incluir:
+
+
+As pessoas que foram entrevistadas na Parte 1.
+
+
+
+Pessoas externas – maior de idade, sem nenhum tipo de vinculo com a UFABC.
+
+
+
+Pessoa de outra equipe da turma, podendo realizar o teste apenas um ou dois
+membros de cada outra equipe.
+
+
+
+Discentes ou docentes da UFABC, não podendo ser integrantes dos cursos de
+Eng. de Informação, Eng. IAR, Ciencia da Computação, ou da área de imagens
+da Eng. Biomédica.
+
+Execução do teste :
+ Aplicar o Roteiro do Laboratório Experimental (LEx) , para os usuários leigos
+convidados, no dia de aula alocada para a ocasião, no próprio laboratório de aulas
+práticas.
+
+ Logo após a execução do procedimento experimental, solicitar a cada usuário
+que responda o questionário. Recolher as respostas de modo adequado, por
+exemplo pelo Google Forms. Nessa ocasião pode-se convidar o usuário para
+responder à enquete.
+ Posteriormente, calcular as notas e a média, colocando numa planilha de
+cálculo.
+
+
+OBS.: se possível, filmar um video mostrando a execução do sistema SPV
+desenvolvido – durante o Teste de Campo, com um integrante da equipe, e/ou
+com um usuário – desde que o mesmo informe o seu consentimento de
+filmagem.
+
+10. Etapa 7: Elaboração do Relatório Final do Trabalho (RFT)
+O relatório final do trabalho deverá ser composto dos seguintes capítulos:
+
+
+Introdução: deverá conter os objetivos do trabalho;
+■ Cenário de Aplicação (CA)
+■ Fundamentação teórica
+
+Materiais e métodos:
+■ Modelagem Funcional do SPV (MF)
+■ Descrição da implementação do Sistema de Processamento da Visão (SPV)
+■ Lista dos arquivos: dos código-fonte, imagens, vídeos, e arquivos auxiliares.
+■ Escrever uma análise técnica: sobre o grau de atendimento do sistema
+desenvolvido em relação ao contexto/cenário escolhido:
+ apresentar medidas ou métricas objetivas (numéricas) e/ou qualitativas,
+resultantes do desempenho; análise e conclusões.
+
+ Laboratorio Experimental:
+■ Roteiro do Laboratório Experimental
+
+
+■ Análise dos Resultados do Teste de Campo TCS: apresentar os resultados
+de forma organizada, listando detalhadamente os experimentos realizados e
+os critérios de avaliação. Analisar também as médias dos alunos, e as
+opiniões subjetivas.
+
+
+Conclusões: Nesta seção a equipe deverá comentar se os objetivos propostos na
+introdução e a modelagem do trabalho foram atingidos ou não, baseados nos
+exemplos apresentados. Deverá ainda comentar sobre os pontos positivos e
+negativos e da implementação.
+
+
+
+Referências Bibliográficas
+
+
+
+Anexo: deverá apresentar os códigos e todos arquivos.
+
+Obs.: o relatório deverá ser formatado em HTML, para visualização em browser.
+
+11. Etapa 7: Elaboração de Apresentação, Videos, e Demo final. (DEMO)
+A preparação do Semináro é feita após o Relatório Final do Trabalho, e a equipe
+deverá elaborar:
+
+12.
+
+
+
+A apresentação em slides do tipo PPT sobre o trabalho. Incluir nesta
+apresentação detalhes computacionais do Sistema, explicando como atendeu
+aos requisitos solicitados quanto ao uso dos conceitos aprendidos da disciplina
+de Visão Computacional.
+
+
+
+Filmar um video mostrando a execução do sistema SPV desenvolvido – que
+pode ser obtido durante o Teste de Campo.
+
+
+
+Preparar uma demonstração ao vivo do sistema SPV original operando com a
+webcam, para ser apresentado no Seminário.
+
+Etapa 8: Apresentação no Seminário da Disciplina (SEMINAR).
+
+a) No dia da apresentação do trabalho será sorteada a ORDEM DE APRESENTAÇÃO dos
+trabalhos.
+b) As equipes sorteadas deverão apresentar os seus trabalhos não ultrapassando o tempo
+estipulado para a apresentação.
+c) No início, cada equipe deverá apresentar os slides destacando as características do seu
+SPG, e o desempenho obtido.
+d) Apresentar o video filmado, e demonstrar o funcionamento do seu SPV.
+c) Após a apresentação o professor e o público poderá fazer perguntas avaliativas aos
+alunos.
+d) O publico presente poderá fazer perguntas gerais aos alunos.
+e) As equipes poderão trazem convidados para assistirem o seminário.
+
+13.
+
+Avaliação do trabalho
+Critério do trabalho final:
+
+
+
+
+- relatório de projeto final, peso 40%
+- criatividade e mérito da implementação, peso 40%
+- Apresentação do seminário e demonstração do sistema, peso 20%
+
+Em todos itens será considerado a aderência à disciplina.
+
+

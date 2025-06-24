@@ -4,161 +4,441 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grupo 8 - ICPG | Visão Computacional UFABC</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
     <style>
-        body {
-            font-family: 'Roboto', sans-serif;
+        :root {
+            --primary: #2563eb;
+            --secondary: #111827;
+            --accent: #e11d48;
+            --bg: #f5f6fa;
+            --white: #fff;
+            --gray: #6b7280;
+            --border: #e5e7eb;
+            --radius: 8px;
+            --shadow: 0 2px 8px rgba(0,0,0,0.04);
+            --transition: 0.2s;
+        }
+        * {
+            box-sizing: border-box;
             margin: 0;
+            padding: 0;
+        }
+        html, body {
+            background: var(--bg);
+            color: var(--secondary);
+            font-family: 'Roboto', sans-serif;
+            font-size: 17px;
             line-height: 1.6;
-            background-color: #1a1a1a;
-            color: #e0e0e0;
+            min-height: 100vh;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .navbar {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        .nav-container {
             max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 30px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 60px;
+            padding: 0 18px;
         }
-        
-        h1 {
-            color: #ffcc00;
-            text-align: center;
-            border-bottom: 2px solid #ffcc00;
-            padding: 20px 0 15px 0;
-            margin-bottom: 30px;
-            font-weight: 500;
-        }
-        
-        h2 {
-            color: #ffcc00;
-            border-bottom: 1px solid #444;
-            padding: 15px 0 10px 0;
-            margin-top: 40px;
-            margin-bottom: 20px;
-            font-weight: 500;
-        }
-        
-        h3 {
-            color: #ffcc00;
-            padding: 10px 0;
-            margin-top: 25px;
-            font-weight: 400;
-        }
-        
-        p {
-            margin-bottom: 20px;
-            padding: 0 15px;
-            font-weight: 300;
-        }
-        
-        ul {
-            padding: 0 15px 0 35px;
-            margin-bottom: 30px;
-        }
-        
-        li {
-            margin-bottom: 12px;
-            padding: 5px 0;
-        }
-        
-        a {
-            color: #ffcc00;
-            text-decoration: none;
-            transition: color 0.2s;
-            padding: 2px 4px;
-            border-radius: 3px;
-        }
-        
-        a:hover {
-            color: #ffffff;
-            text-decoration: none;
-            background-color: #333333;
-        }
-        
-        strong {
-            color: #ffffff;
-            font-weight: 500;
+        .nav-title {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.2rem;
             letter-spacing: 0.5px;
         }
-        
-        .rodape {
-            margin-top: 60px;
-            text-align: center;
-            font-size: 0.9em;
-            color: #888;
-            border-top: 1px solid #444;
-            padding: 25px 15px 15px 15px;
-            font-weight: 300;
+        .nav-links {
+            display: flex;
+            gap: 18px;
+            list-style: none;
         }
-        
+        .nav-links a {
+            color: var(--gray);
+            text-decoration: none;
+            font-weight: 400;
+            padding: 6px 12px;
+            border-radius: 4px;
+            transition: background var(--transition), color var(--transition);
+        }
+        .nav-links a:hover, .nav-links a.active {
+            background: var(--primary);
+            color: var(--white);
+        }
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 18px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+        .nav-toggle .bar {
+            height: 2px;
+            width: 100%;
+            background: var(--primary);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+        header {
+            text-align: center;
+            padding: 38px 0 18px;
+        }
+        header h1 {
+            font-size: 2.1rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+        header p {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+        main.container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 36px 24px 24px 24px;
+            margin-bottom: 32px;
+            margin-top: 24px;
+        }
         section {
-            padding: 20px 0;
-            margin-bottom: 20px;
+            margin-bottom: 36px;
+        }
+        h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 18px;
+            letter-spacing: 0.2px;
+        }
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--secondary);
+            margin-bottom: 12px;
+        }
+        h4 {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        ul {
+            margin-left: 18px;
+            margin-bottom: 16px;
+        }
+        li {
+            margin-bottom: 7px;
+        }
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+        a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+        .authors, .dates {
+            background: #f3f4f6;
+            padding: 10px 14px;
+            border-radius: var(--radius);
+            font-size: 0.98em;
+            color: var(--gray);
+            margin-bottom: 12px;
+        }
+        .content-section {
+            padding-bottom: 0;
+        }
+        .entrevista, .cenario, .requisitos, .referencias, .section {
+            background: #fafbfc;
+            border-radius: var(--radius);
+            padding: 18px 16px;
+            margin-bottom: 18px;
+            border-left: 3px solid var(--primary);
+        }
+        .entrevista h4, .cenario h4, .requisitos h4, .referencias h4 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+        .placeholder {
+            color: #bbb;
+            font-style: italic;
+        }
+        .rodape {
+            text-align: center;
+            padding: 24px 0 18px 0;
+            color: var(--gray);
+            font-size: 0.98em;
+            border-top: 1px solid var(--border);
+            background: var(--white);
+            margin-top: auto;
+        }
+        @media (max-width: 700px) {
+            .nav-container, main.container {
+                padding-left: 8px;
+                padding-right: 8px;
+            }
+            main.container {
+                padding: 18px 6px 12px 6px;
+            }
+            header {
+                padding: 24px 0 10px;
+            }
+            h2 {
+                font-size: 1.1rem;
+            }
+            h3 {
+                font-size: 1rem;
+            }
+            .entrevista, .cenario, .requisitos, .referencias, .section {
+                padding: 12px 7px;
+            }
+        }
+        @media (max-width: 600px) {
+            .nav-toggle {
+                display: flex;
+            }
+            .nav-links {
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                width: 100%;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s;
+                border-bottom: 1px solid var(--border);
+            }
+            .nav-links.open {
+                max-height: 220px;
+            }
+            .nav-links li {
+                width: 100%;
+            }
+            .nav-links li a {
+                display: block;
+                width: 100%;
+                padding: 12px 18px;
+                border-bottom: 1px solid #f3f4f6;
+            }
         }
     </style>
 </head>
-
 <body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <span class="nav-title">Grupo 8 - ICPG</span>
+            <button class="nav-toggle" aria-label="Abrir menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#apresentacao">Apresentação</a></li>
+                <li><a href="#relatorios">Relatórios</a></li>
+                <li><a href="#trabalho">Trabalho</a></li>
+            </ul>
+        </div>
+    </nav>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.nav-links a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    document.querySelector('.nav-links').classList.remove('open');
+                });
+            });
+        });
+    </script>
     <header>
         <h1>Grupo 8 - ICPG</h1>
-        <p style="text-align: center;">Visão Computacional - UFABC 2025.2</p>
+        <p>Visão Computacional - UFABC 2025.2</p>
     </header>
-    
-    <section>
-        <h2>Sobre o Grupo</h2>
-        <p>
-            Bem-vindo à página do Grupo 8 - ICPG! Somos uma equipe de estudantes do quadrimestre 2025.2 
-            da disciplina de Visão Computacional da Universidade Federal do ABC (UFABC). Neste espaço, 
-            compartilhamos nossos trabalhos, relatórios e atividades desenvolvidas ao longo do curso.
-        </p>
-    </section>
-    
-    <section>
-        <h2>Membros da Equipe</h2>
-        <ul>
-            <li><strong>Ian Victor Toniolo Silva</strong> - 11202020351</li>
-            <li><strong>CESAR SEIJI MARUYAMA</strong> - 11127015</li>
-            <li><strong>PEDRO HENRIQUE CARDOSO SILVA</strong> - 11202021250</li>
-            <li><strong>GUILHERME DE SOUSA SANTOS</strong> - 11201921175</li>
-        </ul>
-    </section>
-    
-    <section>
-        <h2>Documentos e Recursos</h2>
-        
-        <div>
-            <h3>Páginas dos Membros</h3>
+    <main class="container">
+
+        <section id="apresentacao" class="content-section">
+            <h2>Sobre o Grupo</h2>
+            <p>
+                Bem-vindo à página do Grupo 8 - ICPG! Somos uma equipe de estudantes do quadrimestre 2025.2 
+                da disciplina de Visão Computacional da Universidade Federal do ABC (UFABC). Neste espaço, 
+                compartilhamos nossos trabalhos, relatórios e atividades desenvolvidas ao longo do curso.
+            </p>
+            <h3>Membros da Equipe</h3>
             <ul>
-                <li>
-                    <a href="membros/ian.html">Página do Ian Victor Toniolo Silva</a>
-                </li>
+                <li><strong>Ian Victor Toniolo Silva</strong> - 11202020351</li>
+                <li><strong>Cesar Seiji Maruyama</strong> - 11127015</li>
+                <li><strong>Pedro Henrique Cardoso Silva</strong> - 11202021250</li>
+                <li><strong>Guilherme de Sousa Santos</strong> - 11201921175</li>
             </ul>
-        </div>
-        
-        <div>
-            <h3>Relatórios</h3>
+            <h3>Documentos e Recursos</h3>
             <ul>
-                <li>
-                    <a href="relatorios/index.html">Índice de Relatórios</a>
-                </li>
+                <li><a href="membros/ian.html">Página do Ian Victor Toniolo Silva</a></li>
+                <li><a href="relatorios/index.html">Índice de Relatórios</a></li>
+                <li><a href="trabalhos/index.html">Índice de Trabalhos</a></li>
             </ul>
-        </div>
-        
-        <div>
-            <h3>Trabalhos</h3>
-            <ul>
-                <li>
-                    <a href="trabalhos/index.html">Índice de Trabalhos</a>
-                </li>
-            </ul>
-        </div>
-    </section>
-    
+        </section>
+
+        <section id="relatorios" class="content-section">
+            <h2>Relatórios</h2>
+            <section id="lab1">
+                <h3>Laboratório 1: Captura de Imagem e Vídeo</h3>
+                <div class="authors">
+                    <b>Autores:</b> Ian Victor Toniolo Silva, Cesar Seiji Maruyama, Pedro Henrique Cardoso Silva, Guilherme de Sousa Santos
+                </div>
+                <div class="dates">
+                    <b>Data dos experimentos:</b> ________<br>
+                    <b>Data de publicação:</b> ________
+                </div>
+                <div class="section">
+                    <h4>Introdução</h4>
+                    <p>Este relatório didático apresenta passo a passo as atividades do Laboratório 1 da disciplina de Visão Computacional da UFABC. O objetivo é ensinar como capturar, visualizar e gravar imagens e vídeos utilizando o OpenCV em Python, além de discutir conceitos fundamentais de processamento de imagens e vídeo.</p>
+                </div>
+                <div class="section">
+                    <h4>Procedimentos Experimentais</h4>
+                    <h4>Parte 1: Processamento Básico</h4>
+                    <ol>
+                        <li>
+                            <b>Leitura de imagem em arquivo (<code>L1_1_img.py</code>)</b><br>
+                            O script lê a imagem <b>messi5.jpg</b> em escala de cinza e exibe na tela. Se pressionar 's', salva como <b>messigray.png</b>.<br>
+                            <code>python3 L1_1_img.py</code><br>
+                            <b>Trecho do código:</b>
+<pre><code>img = cv.imread('messi5.jpg', 0)
+cv.imshow('image', img)
+# ...
+if k == ord('s'):
+    time.sleep(1/10.0)</code></pre>
+                        </li>
+                        <li>
+                            <b>Leitura de imagem da câmera (<code>L1_3_webcam.py</code>)</b><br>
+                            O script abre a webcam e exibe o vídeo em tempo real. Para salvar uma imagem ao pressionar 'x', adicione:<br>
+<pre><code>if cv.waitKey(1) == ord('x'):
+    cv.imwrite('foto1.png', frame)</code></pre>
+                            Assim, o frame atual será salvo como <b>foto1.png</b>.
+                        </li>
+                        <li>
+                            <b>Gravação de vídeo da câmera (<code>L1_4_webcap.py</code>)</b><br>
+                            O script grava o vídeo da webcam em <b>saida.avi</b> (codec XVID), invertendo verticalmente cada frame.<br>
+                            <b>Trecho do código:</b>
+<pre><code>frame = cv.flip(frame, 0)
+out.write(frame)</code></pre>
+                            <b>Para gravar o vídeo "normal":</b> basta remover ou comentar a linha do flip:<br>
+<pre><code># frame = cv.flip(frame, 0)</code></pre>
+                            <b>Para ajustar a velocidade:</b> altere o valor de <code>fps</code> na criação do VideoWriter.<br>
+                        </li>
+                    </ol>
+                    <b>Pergunta geral:</b> Se fosse necessário alterar a imagem (processamento), em que ponto dos programas isso deveria ser feito?<br>
+                    <span class="placeholder">O processamento deve ser feito logo após a leitura do frame/imagem, antes de exibir ou salvar.</span>
+                    <h4>Parte 2: Obtenção de Fotos e Vídeos</h4>
+                    <ol>
+                        <li>Obtenha uma foto geral da equipe com roupas de cores diferentes (RGB destacadas).<br>
+                            <span class="placeholder">Insira a foto da equipe.</span>
+                        </li>
+                        <li>Faça uma montagem de avatares dos membros.<br>
+                            <span class="placeholder">Insira a montagem dos avatares.</span>
+                        </li>
+                        <li>Grave dois vídeos com pessoas (um movimento lento, outro rápido) e dois com objetos.<br>
+                            <span class="placeholder">Insira links ou trechos dos vídeos gravados.</span>
+                        </li>
+                    </ol>
+                </div>
+                <div class="section">
+                    <h4>Análise e Discussão</h4>
+                    <span class="placeholder">Discuta aqui as observações, dificuldades, soluções encontradas e aprendizagem do grupo.</span>
+                </div>
+                <div class="section">
+                    <h4>Conclusões</h4>
+                    <span class="placeholder">Apresente as conclusões do grupo sobre o laboratório.</span>
+                </div>
+                <div class="section">
+                    <h4>Referências</h4>
+                    <ul>
+                        <li>MINICHINO, J. HOWSE, J., Learning OpenCV 3 Computer Vision with Python, 2nd Ed, Packt Publishing, 2015.</li>
+                        <li><a href="https://docs.opencv.org/master/d6/d00/tutorial_py_root.html" target="_blank">Tutorial OpenCV e Python</a></li>
+                        <li><a href="https://docs.opencv.org/4.x/db/deb/tutorial_display_image.html" target="_blank">Getting Started with Images</a></li>
+                        <li><a href="https://docs.opencv.org/4.x/dd/d43/tutorial_py_video_display.html" target="_blank">Getting Started with Videos</a></li>
+                        <li><a href="https://convertio.co/pt/download/d7eb0266a724e277f8adc4397b56ba98acf727/" target="_blank">Ferramenta para converter vídeo para mp4</a></li>
+                    </ul>
+                </div>
+            </section>
+        </section>
+
+        <section id="trabalho" class="content-section">
+            <h2>Trabalho</h2>
+            <section id="etapa0-section">
+                <h3>Entrevistas (Etapa 0)</h3>
+                <article class="entrevista">
+                    <h4>Entrevista 1: Guilherme (Gerente de Logística)</h4>
+                    <ul>
+                        <li><b>Pergunta:</b> Existe alguma tarefa repetitiva no seu trabalho que poderia ser automatizada com um programa simples?</li>
+                        <li><b>Resposta:</b> Sim, todos os dias preciso contar quantos pacotes de cada tipo chegaram ao armazém. Recebo uma planilha com uma coluna "Tipo" e preciso somar quantos de cada tipo vieram. Isso toma tempo e é fácil de errar.</li>
+                        <li><b>Pergunta:</b> Como você faz isso atualmente?</li>
+                        <li><b>Resposta:</b> Eu filtro manualmente na planilha e conto, ou uso a função de contagem do Excel, mas às vezes esqueço de atualizar.</li>
+                        <li><b>Pergunta:</b> Você gostaria de um programa que lesse a planilha e mostrasse automaticamente a contagem de cada tipo?</li>
+                        <li><b>Resposta:</b> Seria ótimo! Facilitaria muito o meu dia a dia.</li>
+                    </ul>
+                </article>
+                <article class="entrevista">
+                    <h4>Entrevista 2: Victor Hugo (Supervisor de Obras)</h4>
+                    <ul>
+                        <li><b>Pergunta:</b> Você tem alguma tarefa repetitiva que poderia ser automatizada com um programa simples?</li>
+                        <li><b>Resposta:</b> Sim, preciso conferir diariamente quantos funcionários de cada função estão presentes na obra. Tenho uma lista com o nome e a função de cada um, mas preciso contar quantos pedreiros, eletricistas, etc. estão presentes.</li>
+                        <li><b>Pergunta:</b> Como faz isso hoje?</li>
+                        <li><b>Resposta:</b> Eu conto manualmente na lista, mas às vezes me confundo ou esqueço alguém.</li>
+                        <li><b>Pergunta:</b> Um programa que lesse a lista e mostrasse a quantidade de cada função ajudaria?</li>
+                        <li><b>Resposta:</b> Com certeza! Seria muito útil e evitaria erros.</li>
+                    </ul>
+                </article>
+            </section>
+            <section id="etapa1-section">
+                <h3>Proposta de Sistema Simples para Contagem Automática</h3>
+                <section class="cenario">
+                    <h4>Cenário de Aplicação Proposto</h4>
+                    <div>
+                        <b>Contexto:</b> Tanto no armazém quanto na obra, existe a necessidade de contar rapidamente quantos itens ou pessoas de cada categoria estão presentes em uma lista.<br>
+                        <b>Problema a ser Resolvido:</b> Automatizar a contagem de categorias em listas simples (planilhas), evitando erros e economizando tempo.<br>
+                        <b>Objetivo:</b> Desenvolver um programa que leia uma planilha (CSV) com uma coluna de categoria (tipo de pacote ou função do funcionário) e exiba a contagem de cada categoria.
+                    </div>
+                </section>
+                <section class="requisitos">
+                    <h4>Requisitos do Sistema</h4>
+                    <ul>
+                        <li>Ler um arquivo CSV com uma coluna de categoria.</li>
+                        <li>Contar automaticamente quantos itens existem de cada categoria.</li>
+                        <li>Exibir o resultado de forma clara e simples.</li>
+                        <li>Ser fácil de usar e adaptar para diferentes listas.</li>
+                    </ul>
+                </section>
+                <section class="referencias">
+                    <h4>Referências das Entrevistas</h4>
+                    <ul>
+                        <li>Guilherme, Gerente de Logística, empresa de transporte.</li>
+                        <li>Victor Hugo, Supervisor de Obras, construtora civil.</li>
+                    </ul>
+                </section>
+            </section>
+        </section>
+    </main>
     <footer class="rodape">
-        <p>&copy; 2025 Grupo 8 - ICPG | Disciplina de Visão Computacional - UFABC</p>
+        &copy; 2025 Grupo 8 - ICPG | Visão Computacional - UFABC<br>
+        <img src="https://www.ufabc.edu.br/images/identidade-visual/ufabc-logo-horizontal-cor.png" alt="UFABC Logo" height="32" style="margin-top:10px;">
     </footer>
-    
 </body>
 </html>
