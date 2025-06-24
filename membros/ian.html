@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <title>Eu tenho Visão com...</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      background: #f7f7f7;
+    }
+
+    header {
+      background-color: #2d3e50;
+      padding: 30px 10px;
+      text-align: center;
+      font-size: 35px;
+      color: #fff;
+      letter-spacing: 2px;
+    }
+
+    section {
+      margin: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      overflow: hidden;
+    }
+
+    nav {
+      float: left;
+      width: 30%;
+      min-width: 220px;
+      background: #e3e8ee;
+      padding: 30px 20px;
+      text-align: center;
+      height: 100%;
+    }
+
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #2d3e50;
+      margin-bottom: 15px;
+    }
+
+    nav h3 {
+      margin-top: 10px;
+      margin-bottom: 5px;
+      color: #2d3e50;
+    }
+
+    nav p {
+      color: #444;
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+
+    article {
+      float: left;
+      padding: 30px 30px 30px 30px;
+      width: 70%;
+      background-color: #f9fafb;
+      min-height: 400px;
+    }
+
+    article h2 {
+      color: #2d3e50;
+      margin-top: 0;
+    }
+
+    .section-block {
+      margin-bottom: 30px;
+    }
+
+    .media-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 10px;
+    }
+
+    .media-item {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      padding: 10px;
+      width: 220px;
+      text-align: center;
+    }
+
+    .media-item img {
+      max-width: 100%;
+      border-radius: 6px;
+      margin-bottom: 8px;
+    }
+
+    .media-item a {
+      color: #1a73e8;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    .media-item a:hover {
+      text-decoration: underline;
+    }
+
+    section::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    footer {
+      background-color: #2d3e50;
+      padding: 12px;
+      text-align: center;
+      color: white;
+      margin-top: 30px;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 900px) {
+      nav, article {
+        width: 100%;
+        float: none;
+        min-width: unset;
+        padding: 20px;
+      }
+      section {
+        margin: 0;
+        border-radius: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  Eu tenho Visão com...<br>
+  <span style="font-size:20px; font-weight:normal;">Processamento Visual e Imagens</span>
+</header>
+
+<section>
+  <nav>
+    <img src="https://e7.pngegg.com/pngimages/799/987/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper-thumbnail.png" alt="Avatar" class="avatar">
+    <h3>Sobre Mim</h3>
+    <p>
+      Olá! Sou apaixonado por tecnologia, especialmente por tudo que envolve visão computacional e processamento de imagens. Gosto de explorar como máquinas podem enxergar e interpretar o mundo visual.
+    </p>
+    <h3>Contato</h3>
+    <p>
+      <a href="mailto:ian.victor@aluno.ufabc.edu.br">ian.victor@aluno.ufabc.edu.br</a>
+    </p>
+  </nav>
+  
+  <article>
+    <div class="section-block">
+      <h2>Minhas Preferências em Visão Computacional</h2>
+      <p>
+        Tenho grande interesse em áreas como reconhecimento de padrões, análise de imagens médicas, visão para robótica e aplicações de inteligência artificial que envolvem processamento visual. Acredito que a visão computacional é uma ponte entre o mundo físico e o digital, permitindo que máquinas entendam, interpretem e interajam com imagens e vídeos de forma cada vez mais inteligente.
+      </p>
+    </div>
+
+    <div class="section-block">
+      <h2>Filmes, Vídeos e Imagens Favoritos</h2>
+      <p>
+        A seguir, compartilho algumas das minhas inspirações visuais e referências favoritas, explicando brevemente o porquê de cada escolha:
+      </p>
+      <div class="media-list">
+        <div class="media-item">
+          <img src="https://upload.wikimedia.org/wikipedia/pt/3/3a/Interstellar_Filme.png" alt="Interstellar Poster">
+          <strong>Filme: Interstellar</strong>
+          <p>Um filme que explora o universo, o tempo e a percepção visual de forma espetacular, com efeitos visuais impressionantes e uma narrativa que desafia nossa compreensão do espaço-tempo.</p>
+        </div>
+        <div class="media-item">
+          <a href="https://www.youtube.com/watch?v=yG5oXqnCXrY&ab_channel=InsideEdition" target="_blank">
+            <img src="https://img.youtube.com/vi/yG5oXqnCXrY/0.jpg" alt="Vídeo Inside Edition">
+            Vídeo: Inside Edition
+          </a>
+          <p>Video de experimento social feito com o Cristiano Ronaldo.</p>
+        </div>
+        <div class="media-item">
+          <a href="https://www.youtube.com/watch?v=IUTGFQpKaPU&ab_channel=CarnegieMellonUniversity" target="_blank">
+            <img src="https://img.youtube.com/vi/IUTGFQpKaPU/0.jpg" alt="Vídeo Carnegie Mellon">
+            Vídeo: Carnegie Mellon University
+          </a>
+          <p>Apresenta a equação mais bonita da matemática.</p>
+        </div>
+        <div class="media-item">
+          <a href="https://cdn.correiodoestado.com.br/upload/dn_arquivo/NoticiaMidia/256558/1580931631575.jpg" target="_blank">
+            <img src="https://cdn.correiodoestado.com.br/upload/dn_arquivo/NoticiaMidia/256558/1580931631575.jpg" alt="Imagem Visão Computacional">
+            Imagem: Rogério Ceni vs Liverpool
+          </a>
+          <p>Uma imagem marcante para o mundial de clubes de 2005.</p>
+        </div>
+      </div>
+    </div>
+  </article>
+</section>
+
+<footer>
+  Página pessoal criada para a disciplina de Processamento Visual e Imagens &copy; 2025
+</footer>
+
+</body>
+</html>
