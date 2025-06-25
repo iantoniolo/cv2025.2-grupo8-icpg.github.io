@@ -841,6 +841,7 @@ hue-6-2: #e6c07b
 <blockquote>
 <p>Neste relatório, serão descritas as etapas realizadas para manipular imagens e vídeos, incluindo a leitura de arquivos, captura de frames de câmeras, ajustes de parâmetros como taxa de quadros (FPS) e operações básicas de processamento. Além disso, serão apresentados os resultados obtidos, como fotos e vídeos capturados durante os experimentos realizados também em laboratório, e discutidas as observações feitas ao longo do processo.</p>
 </blockquote>
+<hr>
 <h3 id="parte-1-processamento-básico-nas-imagens-e-vídeos">PARTE 1: Processamento Básico nas Imagens e Vídeos</h3>
 <p><strong>(A) Leitura de imagem em arquivo</strong></p>
 <blockquote>
@@ -853,6 +854,32 @@ hue-6-2: #e6c07b
 <p>Dessa forma, a imagem será lida corretamente com as cores e apresentada na janela da seguinte forma:</p>
 </blockquote>
 <p><img src="./messi-com-cores.png" alt="alt text" title="Title"></p>
+<p><strong>Como reproduzir?</strong></p>
+<blockquote>
+<ol>
+<li>Certifique-se de ter o Python instalado em sua máquina, juntamente com a biblioteca OpenCV (<code>pip install opencv-python</code>).</li>
+<li>Salve a imagem <code>messi5.jpg</code> no mesmo diretório do script Python.</li>
+<li>Crie um arquivo Python com o seguinte código:</li>
+</ol>
+</blockquote>
+<pre><code class="language-python"> <span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+ <span class="hljs-keyword">import</span> cv2 <span class="hljs-keyword">as</span> cv
+
+ img = cv.imread(<span class="hljs-string">&#x27;messi5.jpg&#x27;</span>,cv.IMREAD_COLOR_BGR)
+ cv.imshow(<span class="hljs-string">&#x27;image&#x27;</span>,img)
+ k = cv.waitKey(<span class="hljs-number">0</span>)
+ <span class="hljs-keyword">if</span> k == <span class="hljs-number">27</span>:         <span class="hljs-comment"># wait for ESC key to exit</span>
+     cv.destroyAllWindows()
+ <span class="hljs-keyword">elif</span> k == <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;s&#x27;</span>): <span class="hljs-comment"># wait for &#x27;s&#x27; key to save and exit</span>
+     cv.imwrite(<span class="hljs-string">&#x27;messigray.png&#x27;</span>,img)
+     cv.destroyAllWindows()
+</code></pre>
+<blockquote>
+<ol start="4">
+<li>Execute o script e observe a imagem colorida sendo exibida na janela.</li>
+</ol>
+</blockquote>
+<hr>
 <p><strong>(B) Leitura de vídeo em arquivo</strong></p>
 <blockquote>
 <p>A velocidade de exibição do vídeo, ou seja, a velocidade com que os frames são exibidos na tela depende do tempo de espera entre a exibição de cada frame, controlado pela linha <code>time.sleep(1/25.0)</code> (simula um atraso de 40ms).</p>
@@ -867,6 +894,46 @@ hue-6-2: #e6c07b
 </blockquote>
 <pre><code class="language-python">time.sleep(<span class="hljs-number">1</span>/<span class="hljs-number">10.0</span>)
 </code></pre>
+<p><strong>Como reproduzir?</strong></p>
+<blockquote>
+<ol>
+<li>Certifique-se de ter o Python e a biblioteca OpenCV instalados.</li>
+<li>Salve o vídeo que deseja exibir no mesmo diretório do script Python.</li>
+<li>Crie um arquivo Python com o seguinte código:</li>
+</ol>
+</blockquote>
+<pre><code class="language-python"> <span class="hljs-keyword">import</span> time
+ <span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+ <span class="hljs-keyword">import</span> cv2 <span class="hljs-keyword">as</span> cv
+
+ cap = cv.VideoCapture(<span class="hljs-string">&#x27;big_buck_bunny.mp4&#x27;</span>)
+
+ <span class="hljs-keyword">while</span>(cap.isOpened()):
+     ret, frame = cap.read()
+     
+     <span class="hljs-keyword">if</span> ret==<span class="hljs-literal">True</span>:
+         <span class="hljs-comment"># show the frame</span>
+         cv.imshow(<span class="hljs-string">&#x27;frame&#x27;</span>,frame)
+
+         <span class="hljs-comment">#wait next frame by 40ms - 25fps</span>
+         time.sleep(<span class="hljs-number">1</span>/<span class="hljs-number">25.0</span>) 
+         
+         <span class="hljs-keyword">if</span> cv.waitKey(<span class="hljs-number">1</span>) &amp; <span class="hljs-number">0xFF</span> == <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;q&#x27;</span>):
+             <span class="hljs-keyword">break</span>
+     <span class="hljs-keyword">else</span>:
+         <span class="hljs-keyword">break</span>
+               
+ cap.release()
+ cv.destroyAllWindows()
+</code></pre>
+<blockquote>
+<ol start="4">
+<li>Substitua <code>'big_buck_bunny.mp4'</code> pelo nome do arquivo de vídeo.</li>
+<li>Ajuste o valor de <code>time.sleep()</code> para alterar a velocidade de exibição do vídeo.</li>
+<li>Execute o script e observe o vídeo sendo exibido na janela.</li>
+</ol>
+</blockquote>
+<hr>
 <p><strong>(C) Leitura de imagem de câmera</strong></p>
 <blockquote>
 <p>Para salvar o frame ao pressionar a tecla 'x', basta adicionar o seguinte comando:</p>
@@ -875,9 +942,66 @@ hue-6-2: #e6c07b
     cv.imwrite(<span class="hljs-string">&#x27;foto1.png&#x27;</span>, frame)
     <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Frame saved as &#x27;foto1.png&#x27;&quot;</span>)
 </code></pre>
+<p><strong>Como reproduzir?</strong></p>
+<blockquote>
+<ol>
+<li>Certifique-se de ter uma câmera conectada ao computador.</li>
+<li>Crie um arquivo Python com o seguinte código:</li>
+</ol>
+</blockquote>
+<pre><code class="language-python"> <span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+ <span class="hljs-keyword">import</span> cv2 <span class="hljs-keyword">as</span> cv
+
+ cap = cv.VideoCapture(<span class="hljs-number">2</span>)
+
+ <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> cap.isOpened():
+     <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Cannot open camera&quot;</span>)
+     exit()
+     
+ <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+     <span class="hljs-comment"># Capture frame-by-frame</span>
+     ret, frame = cap.read()
+     <span class="hljs-comment"># if frame is read correctly ret is True</span>
+     <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> ret:
+         <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Can&#x27;t receive frame (stream end?). Exiting ...&quot;</span>)
+         <span class="hljs-keyword">break</span>
+     
+     <span class="hljs-comment"># Display the resulting frame</span>
+     cv.imshow(<span class="hljs-string">&#x27;frame&#x27;</span>, frame)
+     
+     key = cv.waitKey(<span class="hljs-number">1</span>)
+     
+     <span class="hljs-comment"># Save then frame when &#x27;x&#x27; is pressed</span>
+     <span class="hljs-keyword">if</span> key == <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;x&#x27;</span>):
+         cv.imwrite(<span class="hljs-string">&#x27;foto1.png&#x27;</span>, frame)
+         <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Frame saved as &#x27;foto1.png&#x27;&quot;</span>)
+         
+     <span class="hljs-comment"># Break the loop when &#x27;q&#x27; is pressed</span>
+     <span class="hljs-keyword">if</span> key == <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;q&#x27;</span>):
+         <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Exiting...&quot;</span>)
+         <span class="hljs-keyword">break</span>
+
+ <span class="hljs-comment"># When everything done, release the capture</span>
+ cap.release()
+ cv.destroyAllWindows()
+</code></pre>
+<blockquote>
+<ol start="3">
+<li>Execute o script e pressione 'x' para salvar o frame ou 'q' para sair.</li>
+<li>A imagem será salva como <code>foto1.png</code> no mesmo diretório do script.</li>
+</ol>
+</blockquote>
+<hr>
 <p><strong>(D) Gravação de vídeo da câmera</strong></p>
 <blockquote>
-<p>Para que a saída do vídeo esteja &quot;normal&quot;, ou seja, sem a inversão vertical e com uma velocidade adequada, basta remover o comando <code>cv.flip(frame, 0)</code> que inverte a imagem verticalmente e ajustar o valor da variável <code>fps</code> para um valor mais alto, como <code>60.0</code>, que é uma taxa de quadros comum para vídeos. Assim, o código para exibir e salvar o vídeo ficará assim:</p>
+<p>Para que a saída do vídeo esteja &quot;normal&quot;, ou seja, sem a inversão vertical e com uma velocidade adequada, basta remover o comando <code>cv.flip(frame, 0)</code> que inverte a imagem verticalmente e ajustar o valor da variável <code>fps</code> para um valor mais alto, como <code>60.0</code>, que é uma taxa de quadros comum para vídeos.</p>
+</blockquote>
+<p><strong>Como reproduzir?</strong></p>
+<blockquote>
+<ol>
+<li>Certifique-se de ter uma câmera conectada ao computador.</li>
+<li>Crie um arquivo Python com o seguinte código:</li>
+</ol>
 </blockquote>
 <pre><code class="language-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
 <span class="hljs-keyword">import</span> cv2 <span class="hljs-keyword">as</span> cv
@@ -896,25 +1020,33 @@ fourcc = cv.VideoWriter_fourcc(*<span class="hljs-string">&#x27;XVID&#x27;</span
 out = cv.VideoWriter(<span class="hljs-string">&#x27;saida.avi&#x27;</span>, fourcc, fps, (<span class="hljs-built_in">int</span>(width),<span class="hljs-built_in">int</span>(height)) )
 
 <span class="hljs-keyword">while</span> cap.isOpened():
-    ret, frame = cap.read()
-    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> ret:
-        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Can&#x27;t receive frame (stream end?). Exiting ...&quot;</span>)
-        <span class="hljs-keyword">break</span>
-    <span class="hljs-comment"># write the flipped frame</span>
-    out.write(frame)
-    cv.imshow(<span class="hljs-string">&#x27;frame&#x27;</span>, frame)
-    <span class="hljs-keyword">if</span> cv.waitKey(<span class="hljs-number">1</span>) == <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;q&#x27;</span>):
-        <span class="hljs-keyword">break</span>
+ ret, frame = cap.read()
+ <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> ret:
+     <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Can&#x27;t receive frame (stream end?). Exiting ...&quot;</span>)
+     <span class="hljs-keyword">break</span>
+ <span class="hljs-comment"># write the flipped frame</span>
+ out.write(frame)
+ cv.imshow(<span class="hljs-string">&#x27;frame&#x27;</span>, frame)
+ <span class="hljs-keyword">if</span> cv.waitKey(<span class="hljs-number">1</span>) == <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;q&#x27;</span>):
+     <span class="hljs-keyword">break</span>
 
 <span class="hljs-comment"># Release everything if job is finished</span>
 cap.release()
 out.release()
 cv.destroyAllWindows()
 </code></pre>
+<blockquote>
+<ol start="3">
+<li>Execute o script e pressione 'q' para encerrar a gravação.</li>
+<li>O vídeo será salvo como <code>saida.avi</code> no mesmo diretório do script.</li>
+</ol>
+</blockquote>
+<hr>
 <p><strong>Responda: se for necessário alterar a imagem, ou seja realizando alguma operação de procesamento nela, em que ponto dos quatro programas estudados isso deve ser realizado?</strong></p>
 <blockquote>
 <p>As operações de processamento de imagem devem ser realizadas após a leitura da imagem ou do frame do vídeo, mas antes de exibi-los ou salvá-los.</p>
 </blockquote>
+<hr>
 <h3 id="parte-2-obtenção-de-fotos-e-vídeos">PARTE 2: Obtenção de Fotos e Vídeos</h3>
 <p><strong>(A) Obtenção de foto da equipe</strong></p>
 <p><strong>(B) Foto Avatar da equipe</strong></p>
@@ -939,7 +1071,9 @@ cv.destroyAllWindows()
 <blockquote>
 <p>O seguinte vídeo foi gravado com um objeto (um livro) realizando movimentos lentos:</p>
 </blockquote>
+<hr>
 <h3 id="análise-e-conclusão">ANÁLISE E CONCLUSÃO</h3>
+<hr>
 <h3 id="referências">REFERÊNCIAS</h3>
 <ul>
 <li>OpenCV Documentation: <a href="https://docs.opencv.org/">https://docs.opencv.org/</a></li>

@@ -19,6 +19,8 @@
 
 > Neste relatório, serão descritas as etapas realizadas para manipular imagens e vídeos, incluindo a leitura de arquivos, captura de frames de câmeras, ajustes de parâmetros como taxa de quadros (FPS) e operações básicas de processamento. Além disso, serão apresentados os resultados obtidos, como fotos e vídeos capturados durante os experimentos realizados também em laboratório, e discutidas as observações feitas ao longo do processo.
 
+---
+
 ### PARTE 1: Processamento Básico nas Imagens e Vídeos
 
 **(A) Leitura de imagem em arquivo**
@@ -32,6 +34,27 @@ img = cv.imread('messi5.jpg',cv.IMREAD_COLOR_BGR)
 > Dessa forma, a imagem será lida corretamente com as cores e apresentada na janela da seguinte forma:
 
 ![alt text](messi-com-cores.png "Title")
+
+**Como reproduzir?**
+> 1. Certifique-se de ter o Python instalado em sua máquina, juntamente com a biblioteca OpenCV (`pip install opencv-python`).
+> 2. Salve a imagem `messi5.jpg` no mesmo diretório do script Python.
+> 3. Crie um arquivo Python com o seguinte código:
+   ```python
+    import numpy as np
+    import cv2 as cv
+
+    img = cv.imread('messi5.jpg',cv.IMREAD_COLOR_BGR)
+    cv.imshow('image',img)
+    k = cv.waitKey(0)
+    if k == 27:         # wait for ESC key to exit
+        cv.destroyAllWindows()
+    elif k == ord('s'): # wait for 's' key to save and exit
+        cv.imwrite('messigray.png',img)
+        cv.destroyAllWindows()
+   ```
+> 4. Execute o script e observe a imagem colorida sendo exibida na janela.
+
+---
 
 **(B) Leitura de vídeo em arquivo**
 > A velocidade de exibição do vídeo, ou seja, a velocidade com que os frames são exibidos na tela depende do tempo de espera entre a exibição de cada frame, controlado pela linha `time.sleep(1/25.0)` (simula um atraso de 40ms).
@@ -48,6 +71,41 @@ time.sleep(1/50.0)
 time.sleep(1/10.0)
 ```
 
+**Como reproduzir?**
+> 1. Certifique-se de ter o Python e a biblioteca OpenCV instalados.
+> 2. Salve o vídeo que deseja exibir no mesmo diretório do script Python.
+> 3. Crie um arquivo Python com o seguinte código:
+   ```python
+    import time
+    import numpy as np
+    import cv2 as cv
+
+    cap = cv.VideoCapture('big_buck_bunny.mp4')
+
+    while(cap.isOpened()):
+        ret, frame = cap.read()
+        
+        if ret==True:
+            # show the frame
+            cv.imshow('frame',frame)
+
+            #wait next frame by 40ms - 25fps
+            time.sleep(1/25.0) 
+            
+            if cv.waitKey(1) & 0xFF == ord('q'):
+                break
+        else:
+            break
+                  
+    cap.release()
+    cv.destroyAllWindows()
+   ```
+> 4. Substitua `'big_buck_bunny.mp4'` pelo nome do arquivo de vídeo.
+> 5. Ajuste o valor de `time.sleep()` para alterar a velocidade de exibição do vídeo.
+> 6. Execute o script e observe o vídeo sendo exibido na janela.
+
+---
+
 **(C) Leitura de imagem de câmera**
 > Para salvar o frame ao pressionar a tecla 'x', basta adicionar o seguinte comando:
 
@@ -57,11 +115,59 @@ if key == ord('x'):
     print("Frame saved as 'foto1.png'")
 ```
 
-**(D) Gravação de vídeo da câmera**
-> Para que a saída do vídeo esteja "normal", ou seja, sem a inversão vertical e com uma velocidade adequada, basta remover o comando `cv.flip(frame, 0)` que inverte a imagem verticalmente e ajustar o valor da variável `fps` para um valor mais alto, como `60.0`, que é uma taxa de quadros comum para vídeos. Assim, o código para exibir e salvar o vídeo ficará assim:
+**Como reproduzir?**
+> 1. Certifique-se de ter uma câmera conectada ao computador.
+> 2. Crie um arquivo Python com o seguinte código:
+   ```python
+    import numpy as np
+    import cv2 as cv
 
-```python
-import numpy as np
+    cap = cv.VideoCapture(2)
+
+    if not cap.isOpened():
+        print("Cannot open camera")
+        exit()
+        
+    while True:
+        # Capture frame-by-frame
+        ret, frame = cap.read()
+        # if frame is read correctly ret is True
+        if not ret:
+            print("Can't receive frame (stream end?). Exiting ...")
+            break
+        
+        # Display the resulting frame
+        cv.imshow('frame', frame)
+        
+        key = cv.waitKey(1)
+        
+        # Save then frame when 'x' is pressed
+        if key == ord('x'):
+            cv.imwrite('foto1.png', frame)
+            print("Frame saved as 'foto1.png'")
+            
+        # Break the loop when 'q' is pressed
+        if key == ord('q'):
+            print("Exiting...")
+            break
+
+    # When everything done, release the capture
+    cap.release()
+    cv.destroyAllWindows()
+   ```
+> 3. Execute o script e pressione 'x' para salvar o frame ou 'q' para sair.
+> 4. A imagem será salva como `foto1.png` no mesmo diretório do script.
+
+---
+
+**(D) Gravação de vídeo da câmera**
+> Para que a saída do vídeo esteja "normal", ou seja, sem a inversão vertical e com uma velocidade adequada, basta remover o comando `cv.flip(frame, 0)` que inverte a imagem verticalmente e ajustar o valor da variável `fps` para um valor mais alto, como `60.0`, que é uma taxa de quadros comum para vídeos.
+
+**Como reproduzir?**
+> 1. Certifique-se de ter uma câmera conectada ao computador.
+> 2. Crie um arquivo Python com o seguinte código:
+   ```python
+   import numpy as np
 import cv2 as cv
 
 cap = cv.VideoCapture(2)
@@ -92,10 +198,16 @@ while cap.isOpened():
 cap.release()
 out.release()
 cv.destroyAllWindows()
-```
+   ```
+> 3. Execute o script e pressione 'q' para encerrar a gravação.
+> 4. O vídeo será salvo como `saida.avi` no mesmo diretório do script.
+
+---
 
 **Responda: se for necessário alterar a imagem, ou seja realizando alguma operação de procesamento nela, em que ponto dos quatro programas estudados isso deve ser realizado?**
 > As operações de processamento de imagem devem ser realizadas após a leitura da imagem ou do frame do vídeo, mas antes de exibi-los ou salvá-los.
+
+---
 
 ### PARTE 2: Obtenção de Fotos e Vídeos
 
@@ -124,7 +236,11 @@ cv.destroyAllWindows()
 
 > O seguinte vídeo foi gravado com um objeto (um livro) realizando movimentos lentos:
 
+---
+
 ### ANÁLISE E CONCLUSÃO
+
+---
 
 ### REFERÊNCIAS
 - OpenCV Documentation: https://docs.opencv.org/

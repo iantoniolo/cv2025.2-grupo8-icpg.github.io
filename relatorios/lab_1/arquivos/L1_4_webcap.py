@@ -1,13 +1,14 @@
 import numpy as np
 import cv2 as cv
-cap = cv.VideoCapture(0)
+
+cap = cv.VideoCapture(2)
 
 # Get current width of frame
 width = cap.get(cv.CAP_PROP_FRAME_WIDTH)   # float
 # Get current height of frame
 height = cap.get(cv.CAP_PROP_FRAME_HEIGHT) # float
 # Define Video Frame Rate in fps
-fps = 10.0
+fps = 60.0
 
 # Define the codec and create VideoWriter object
 fourcc = cv.VideoWriter_fourcc(*'XVID')
@@ -18,7 +19,6 @@ while cap.isOpened():
     if not ret:
         print("Can't receive frame (stream end?). Exiting ...")
         break
-    frame = cv.flip(frame, 0)
     # write the flipped frame
     out.write(frame)
     cv.imshow('frame', frame)
