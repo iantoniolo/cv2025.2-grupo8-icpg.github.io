@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Eu tenho Visão com...</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    header {
+      background-color: #222;
+      color: #fff;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+
+    header p {
+      margin-top: 0.5rem;
+      font-size: 1.2em;
+    }
+
+    .layout {
+      display: flex;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    aside {
+      width: 280px;
+      background-color: #fff;
+      padding: 1.5rem;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+      border-radius: 10px;
+      margin-right: 2rem;
+      height: fit-content;
+      text-align: center;
+    }
+
+    .photo-frame {
+      width: 200px;
+      height: 200px;
+      margin: 0 auto 1rem auto;
+      padding: 8px;
+      border: 3px solid #555;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: white;
+      overflow: hidden;
+    }
+
+    .photo-frame img {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    aside h2 {
+      margin-top: 1rem;
+      font-size: 1.5em;
+    }
+
+    aside .resumo {
+      margin-top: 1rem;
+      font-size: 1em;
+      text-align: left;
+    }
+
+    aside .contact {
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .section-box {
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    .section-box h2 {
+      font-size: 1.8em;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .section-box p {
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .video-item iframe {
+      width: 100%;
+      height: 160px;
+      border-radius: 8px;
+      border: none;
+    }
+
+    .video-item p {
+      margin-top: 0.5rem;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .layout {
+        flex-direction: column;
+        padding: 1rem;
+      }
+
+      aside {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Eu tenho Visão com...</h1>
+    <p>Processamento Visual e Imagens</p>
+  </header>
+
+  <div class="layout">
+    <!-- BARRA LATERAL: SOBRE MIM -->
+    <aside>
+      <div class="photo-frame">
+        <img src="sua-foto.jpg" alt="Minha foto" />
+      </div>
+      <h2>Sobre mim</h2>
+      <div class="resumo">
+        <p>
+          Olá, meu nome é César. Sou analista de dados, gosto muito de treinar, acompanhar notícias e buscar dicas pela internet.
+        </p>
+      </div>
+      <div class="contact">
+        <strong>Email:</strong><br />
+        <a href="mail">c.seiji@aluno.ufabc.edu.br</a>
+      </div>
+    </aside>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main>
+      <!-- PREFERÊNCIAS -->
+      <div class="section-box">
+  <h2>Minhas Preferências em Visão Computacional</h2>
+  <p>
+    Tenho muita curiosidade sobre o que acontece nos bastidores da visão computacional, especialmente ao lidar com imagens. Acho o tema muito relevante, principalmente quando precisamos analisar vídeos, processar imagens e entender os detalhes por trás dessas informações visuais.
+  </p>
+</div>
+
+      <!-- VÍDEOS FAVORITOS -->
+      <div class="section-box">
+        <h2>Filmes, Vídeos e Imagens Favoritos</h2>
+        <div class="video-grid">
+          <div class="video-item">
+  <iframe src="https://www.youtube.com/embed/YoHD9XEInc0" title="Inception Trailer" allowfullscreen></iframe>
+  <p>
+    <strong>Inception (A Origem)</strong>: Gosto do filme porque ele fala sobre sonhos de um jeito diferente, com uma história cheia de mistérios e que faz a gente pensar. Também curto o final aberto, que deixa espaço para várias interpretações.
+  </p>
+</div>
+
+          <div class="video-item">
+            <iframe
+              src="https://www.youtube.com/embed/PRnxLqYVoMc"
+              title="F1 Official Trailer 2"
+              allowfullscreen
+            ></iframe>
+            <p>
+              <strong>F1 (filme)</strong>: Gosto de acompanhar as corridas pela competitividade dos corredores e pela melhoria constante na engenharia dos carros construídos. É uma mistura de adrenalina, precisão e inovação tecnológica.
+            </p>
+          </div>
+
+          <div class="video-item">
+            <iframe
+                src="https://www.youtube.com/embed/9NAuIOkIp_c"
+                title="Assista às últimas informações após EUA atacarem o Irã - 22/06/2025"
+                allowfullscreen
+            ></iframe>
+            <p>
+                <strong>Geopolítica</strong>: Gosto do assunto para me atualizar sobre como o mundo vem se movimentando e compreender minimamente como esses movimentos podem impactar nossas vidas.
+            </p>
+        </div>
+
+
+
+          <div class="video-item">
+  <iframe
+    src="https://www.youtube.com/embed/WJ365lNa1uY"
+    title="Técnica no treino de costas - Fabrício Pacholok"
+    allowfullscreen
+  ></iframe>
+  <p>
+    <strong>Dicas de Treino de Musculação</strong>: Gosto de acompanhar esse tipo de conteúdo para aprender novas técnicas de treino e melhorar minhas execuções.
+  </p>
+</div>
+
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+</body>
+</html>
