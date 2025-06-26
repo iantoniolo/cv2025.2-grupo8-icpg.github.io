@@ -231,14 +231,38 @@ cv.destroyAllWindows()
   Your browser does not support the video tag.
 </video>
 
-> O seguinte vídeo foi gravado com um objeto (um livro) realizando movimentos rápidos:
+> O seguinte vídeo foi gravado com um objeto (uma garrafa) realizando movimentos rápidos:
+
+<video width="320" height="240" controls>
+  <source src="./objeto_rapido_garrafa.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 
-> O seguinte vídeo foi gravado com um objeto (um livro) realizando movimentos lentos:
+> O seguinte vídeo foi gravado com um objeto (uma garrafa) realizando movimentos lentos:
+
+<video width="320" height="240" controls>
+  <source src="./objeto_lento_garrafa.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 ---
 
-### ANÁLISE E CONCLUSÃO
+### Análise
+
+Neste laboratório, o foco foi a captura e manipulação de imagens e vídeos utilizando a biblioteca OpenCV. Ao longo dos experimentos, foi abordado diversos aspectos práticos que envolveram a leitura, exibição, gravação e processamento básico de arquivos de imagem e vídeo. E cada etapa contribuiu para uma melhor compreensão das funções da OpenCV e da também a interação com arquivos de mídia.
+
+Na parte de processamento de imagens e vídeos, foi possível realizar ajustes fundamentais nos scripts do roteiro, como a leitura de imagens em diferentes formatos, alteração da taxa de quadros (FPS) em vídeos e a captura de frames em tempo real de uma câmera. A experimentação com a manipulação de vídeos mostrou a importância de controlar a taxa de quadros, que impacta diretamente na fluidez, sendo possível ajustar a velocidade de reprodução com base em configurações como time.sleep() pra controlar a captura de novos frames. E também foi possível realizar a inversão vertical dos frames com uma correção pela simples remoção do comando cv.flip().
+
+A parte prática do laboratório foi um exercício de aplicação de conceitos teóricos, como a manipulação de objetos do tipo cv.VideoCapture e cv.VideoWriter para capturar e salvar vídeos. Além disso, os experimentos envolvendo movimentos rápidos e lentos mostraram as diferenças na captura e na percepção do movimento, enfatizando a importância de um bom controle da taxa de quadros para capturar detalhes em vídeos com movimentos rápidos.
+
+### Conclusão
+
+Por fim, este laboratório permitiu a aplicação prática de conceitos de Visão Computacional relacionados à captura, exibição, gravação e processamento básico de imagens e vídeos. Através dos experimentos que foram realizados, e assim foi possível observar os efeitos da taxa de quadros na reprodução de vídeos e como ajustes simples no código podem alterar significativamente a qualidade da captura e exibição das imagens e vídeos.
+
+A experiência também revelou a importância de entender a arquitetura e os parâmetros da OpenCV, como o controle do FPS, a leitura de arquivos e a gravação em tempo real.
+
+Essas atividades foram fundamentais para o desenvolvimento de habilidades e analise no âmbito de Visão Computacional e abrem portas para experimentos mais complexos, como o processamento de vídeos em tempo real, detecção de objetos e movimento, e outros algoritmos aplicados a fluxos de imagens e vídeos. A experiência prática, aliada ao conhecimento teórico adquirido, fortalece a base necessária para projetos futuros na área.
 
 ---
 
