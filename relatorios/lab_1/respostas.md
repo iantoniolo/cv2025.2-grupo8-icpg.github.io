@@ -213,6 +213,8 @@ cv.destroyAllWindows()
 
 **(A) Obtenção de foto da equipe**
 
+<img src="./foto1.png" width="320" height="240">
+
 **(B) Foto Avatar da equipe**
 
 **(C) Vídeos com pessoas e com objeto**
