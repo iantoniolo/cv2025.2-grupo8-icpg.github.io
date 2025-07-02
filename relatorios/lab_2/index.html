@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
   <meta name="color-scheme" content="light">
+
   <title>Relatório – Lab 2</title>
 
   <link rel="stylesheet"
@@ -14,12 +15,37 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github.min.css" />
 
   <style>
-    main{max-width:48rem;margin:0 auto;padding:2rem 1rem 6rem;}
-    #toTop{position:fixed;bottom:1.25rem;right:1.25rem;display:none;padding:.5rem .8rem;font-size:1rem;border:0;
-           border-radius:.5rem;background:#4b5563;color:#fff;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.3);
-           transition:opacity .2s;}
-    #toTop:hover{opacity:.85}
+    body{
+      display:flex;         
+      flex-direction:column;
+      align-items:center;   
+      margin:0;             
+    }
 
+    main.markdown-body{
+      max-width:48rem;   
+      width:100%;        
+      padding:2rem 1rem 6rem;
+    }
+    #toTop{
+      position:fixed;
+      bottom:1.25rem;
+      right:1.25rem;
+      display:none;
+      padding:.5rem .8rem;
+      font-size:1rem;
+      border:0;
+      border-radius:.5rem;
+      background:#4b5563;
+      color:#fff;
+      cursor:pointer;
+      box-shadow:0 2px 6px rgba(0,0,0,.3);
+      transition:opacity .2s;
+    }
+    #toTop:hover{opacity:.85;}
+
+    html.smooth-scroll{scroll-behavior:smooth;}
+    html,body,.markdown-body{background:#fff;color:#24292f;}
     pre code, pre>code.hljs{background:#f6f8fa !important;}
     table{background:#fff !important;}
   </style>
@@ -38,14 +64,19 @@
     fetch('lab2.md')
       .then(r => { if(!r.ok) throw Error('lab2.md não encontrado'); return r.text(); })
       .then(md => {
-        document.getElementById('post').innerHTML = marked.parse(md, { mangle:false, headerIds:false });
+        document.getElementById('post').innerHTML =
+          marked.parse(md, { mangle:false, headerIds:false });
         hljs.highlightAll();
       })
-      .catch(err => { document.getElementById('post').innerHTML = '<p style="color:red;">'+err.message+'</p>'; });
+      .catch(err => {
+        document.getElementById('post').innerHTML =
+          '<p style="color:red;">' + err.message + '</p>';
+      });
 
-    const btn=document.getElementById('toTop');
-    addEventListener('scroll',()=>btn.style.display=scrollY>200?'block':'none');
-    btn.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
+    /* Botão “voltar ao topo” */
+    const btn = document.getElementById('toTop');
+    addEventListener('scroll', () => btn.style.display = scrollY > 200 ? 'block' : 'none');
+    btn.addEventListener('click', () => scrollTo({ top:0, behavior:'smooth' }));
   </script>
 </body>
 </html>
