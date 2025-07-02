@@ -5,15 +5,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Relatório – Lab 2</title>
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.8.1/github-markdown.min.css"
-    />
-
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github-dark.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.8.1/github-markdown.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github.min.css" />
 
     <style>
       main {
@@ -31,7 +24,7 @@
         font-size: 1rem;
         border: none;
         border-radius: 0.5rem;
-        background: #0d1117;
+        background: #0066cc;
         color: #fff;
         cursor: pointer;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
@@ -58,24 +51,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
 
     <script>
-      // 1) Carregar o Markdown
       fetch('lab2.md')
         .then((resp) => {
           if (!resp.ok) throw new Error('lab2.md não encontrado');
           return resp.text();
         })
         .then((md) => {
-          // 2) Converter MD → HTML
           const html = marked.parse(md, { mangle: false, headerIds: false });
           const post = document.getElementById('post');
           post.innerHTML = html;
-
-          // 3) Destacar blocos de código
           hljs.highlightAll();
         })
         .catch((err) => {
-          document.getElementById('post').innerHTML =
-            '<p style="color:red;">' + err.message + '</p>';
+          document.getElementById('post').innerHTML = '<p style="color:red;">' + err.message + '</p>';
         });
 
       const btn = document.getElementById('toTop');
