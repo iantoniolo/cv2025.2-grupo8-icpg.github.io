@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="color-scheme" content="light" />
     <title>Relatório – Lab 2</title>
 
+    <!-- estilo Markdown (GitHub) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.8.1/github-markdown.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github.min.css" />
 
@@ -15,11 +15,9 @@
         margin: 0 auto;
         padding: 2rem 1rem 6rem;
       }
-
       .markdown-body {
         margin-left: auto;
         margin-right: auto;
-        color-scheme: light;
       }
 
       #toTop {
@@ -34,15 +32,28 @@
         background: #4b5563;
         color: #fff;
         cursor: pointer;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-        transition: opacity 0.2s ease-in-out;
+        box-shadow: 0 2px 6px rgba(0,0,0,.3);
+        transition: opacity .2s ease-in-out;
       }
-      #toTop:hover {
-        opacity: 0.85;
+      #toTop:hover { opacity: .85; }
+
+      html.smooth-scroll { scroll-behavior: smooth; }
+
+      html,
+      body,
+      .markdown-body {
+        background: #fff !important;
+        color: #24292f !important;
+        color-scheme: light !important;
       }
 
-      html.smooth-scroll {
-        scroll-behavior: smooth;
+      @media (prefers-color-scheme: dark) {
+        html,
+        body,
+        .markdown-body {
+          background: #fff !important;
+          color: #24292f !important;
+        }
       }
     </style>
   </head>
@@ -59,29 +70,20 @@
 
     <script>
       fetch('lab2.md')
-        .then((resp) => {
-          if (!resp.ok) throw new Error('lab2.md não encontrado');
-          return resp.text();
-        })
-        .then((md) => {
-          const html = marked.parse(md, { mangle: false, headerIds: false });
-          const post = document.getElementById('post');
-          post.innerHTML = html;
+        .then(r => { if(!r.ok) throw Error('lab2.md não encontrado'); return r.text(); })
+        .then(md => {
+          document.getElementById('post').innerHTML =
+            marked.parse(md, { mangle:false, headerIds:false });
           hljs.highlightAll();
         })
-        .catch((err) => {
-          document.getElementById('post').innerHTML = '<p style="color:red;">' + err.message + '</p>';
+        .catch(err => {
+          document.getElementById('post').innerHTML =
+            '<p style="color:red;">' + err.message + '</p>';
         });
 
       const btn = document.getElementById('toTop');
-
-      window.addEventListener('scroll', () => {
-        btn.style.display = window.scrollY > 200 ? 'block' : 'none';
-      });
-
-      btn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
+      addEventListener('scroll', () => btn.style.display = scrollY > 200 ? 'block' : 'none');
+      btn.addEventListener('click', () => scrollTo({ top:0, behavior:'smooth' }));
     </script>
   </body>
 </html>
