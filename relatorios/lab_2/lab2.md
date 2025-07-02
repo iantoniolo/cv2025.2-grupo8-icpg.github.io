@@ -220,7 +220,7 @@ Utilizamos uma câmera pessoal, imagens disponíveis em: `arquivos/camera-pessoa
 ```
 
 **tvecs**
-````
+```
 [-4.8700,  1.6725, 17.5216]
 [-3.1929, -3.1835, 10.8636]
 [ 2.4155, -3.6688, 15.2343]
