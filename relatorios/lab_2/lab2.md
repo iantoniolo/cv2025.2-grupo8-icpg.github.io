@@ -30,9 +30,9 @@ Para usar a câmera como um instrumento de medição confiável, é necessário 
 
 #### PARTE 2: Executar um exemplo de calibração de câmeras.
 
-##### (A) O procedimento de calibração de câmera com imagens fornecidas de exemplo.
+#### (A) O procedimento de calibração de câmera com imagens fornecidas de exemplo.
 
-##### Parâmetros da Calibração da Câmera
+#### Parâmetros da Calibração da Câmera
 
 **Matriz Intrínseca (K)**
 
@@ -105,11 +105,11 @@ Configura algumas das imagens utilizadas:
 - **rvecs**: Vetores de rotação, orientações da câmera em relação ao tabuleiro em cada imagem.
 - **tvecs**: Vetores de translação, posições da câmera em relação ao tabuleiro em cada imagem.
 
-##### (B) Calibração da sua webcam com a captura de suas próprias imagens de calibração
+#### (B) Calibração da sua webcam com a captura de suas próprias imagens de calibração
 
-![alt text](procedimentoB.png)
+<img src="procedimentoB.png" width=420/>
 
-###### Calibração de WebCam
+##### Calibração de WebCam
 
 Imagem de exemplo
 
@@ -143,7 +143,7 @@ Imagem de exemplo
 [-0.74546731 -0.51204921 1.49235451]
 ```
 
-**tvecs** (um vetor por imagem)  
+**tvecs** (um vetor por imagem, imagens 1 a 15, valores respectivos)  
 
 ```
 [-4.55945281 -3.31698069 17.14627374]
@@ -191,6 +191,7 @@ Com **K** + **d** você pode undistort frames da webcam ou projetar objetos 3-D 
 
 ##### (C) Realize a calibração de uma outra câmera pessoal:
 
+##### (D) Correção de distorção de imagens:
 
 ### ANÁLISE E DISCUSSÃO DOS ESTUDOS REALIZADOS
 
