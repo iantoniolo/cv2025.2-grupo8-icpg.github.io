@@ -30,7 +30,80 @@ Para usar a câmera como um instrumento de medição confiável, é necessário 
 
 #### PARTE 2: Executar um exemplo de calibração de câmeras.
 
-##### (A) O procedimento de calibração de câmera com imagens fornecidas de exemplo
+##### (A) O procedimento de calibração de câmera com imagens fornecidas de exemplo.
+
+##### Parâmetros da Calibração da Câmera
+
+**Matriz Intrínseca (K)**
+
+```
+K =
+[[536.07345296   0.         342.37047282]
+ [  0.         536.01636332 235.53687702]
+ [  0.           0.           1.        ]]
+```
+
+**Vetor de Distorção (dist)**
+
+```
+dist =
+[[-0.26509044 -0.04674186  0.00183301 -0.00031469  0.25231154]]
+```
+
+**Vetores de Rotação**
+
+```
+rvecs = [
+ [ 0.48287277], [-0.17037078], [-1.40740327],
+ [-0.35339067], [ 0.24071863], [ 0.20970027],
+ [ 0.19721096], [-0.42009963], [-0.1949708 ],
+ [-0.08398729], [ 0.34802798], [-1.54244125],
+ [-0.34698232], [-0.06738512], [-1.20088998],
+ [-0.22584613], [ 1.0155115 ], [-2.79470623],
+ [-0.37463355], [ 0.06982818], [-0.01937111],
+ [ 0.06525918], [ 0.44701842], [ 0.10800013],
+ [-0.10141629], [ 0.32034812], [ 0.3147293 ],
+ [ 0.49542336], [ 0.11948808], [-0.29675958],
+ [-0.4735952 ], [ 0.08970834], [-0.22605981],
+ [ 0.05280128], [-0.60171832], [-0.18453815],
+ [-0.27527313], [ 0.10123349], [-1.56296568]
+]
+```
+
+**Vetores de Translação (tvecs)**
+
+```
+tvecs = [
+ [-3.50264637], [ 1.61595404], [11.97222152],
+ [-1.59004095], [-4.31771235], [14.01040668],
+ [-2.67642941], [-3.18945602], [10.58262241],
+ [-2.96218417], [ 0.57158932], [16.83013775],
+ [-3.427436  ], [ 0.4873819 ], [11.56153507],
+ [ 2.53399419], [ 4.31999128], [13.71919122],
+ [-2.95848731], [-3.94417974], [13.21423743],
+ [ 2.20741839], [-3.21446613], [15.60125394],
+ [-3.72585434], [-4.3108485 ], [17.20439703],
+ [-3.40557514], [-2.41042315], [12.58706805],
+ [-2.51791826], [-3.43069105], [12.85702135],
+ [-2.16838794], [-3.50011196], [10.73694991],
+ [-3.99388098], [ 2.27704343], [12.68878108]
+]
+```
+
+Configura algumas das imagens utilizadas:
+
+<img src="./arquivos/samples/left01.jpg" width=420>
+
+<br>
+
+<img src="./arquivos/samples/left02.jpg" width=420>
+
+**Significado dos Parâmetros**
+
+- **K**: Matriz intrínseca, representa os parâmetros internos da câmera, foco e centro óptico.
+- **dist**: Vetor de distorção, corrige imperfeições da lente considerando radial/tangencial.
+- **rvecs**: Vetores de rotação, orientações da câmera em relação ao tabuleiro em cada imagem.
+- **tvecs**: Vetores de translação, posições da câmera em relação ao tabuleiro em cada imagem.
 
 ##### (B) Calibração da sua webcam com a captura de suas próprias imagens de calibração
 
