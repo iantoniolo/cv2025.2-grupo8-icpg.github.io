@@ -187,10 +187,6 @@ Cada foto traz uma pose diferente do tabuleiro:
 
 São **extrínsecos** (pois mudam a cada foto); **K** e **d** são **intrínsecos** (fixos, independente da foto).
 
-**De forma rápida, concluímos pra esse teste**
-
-Com **K** + **d** você pode undistort frames da webcam ou projetar objetos 3-D (AR) com erro < 1 px em condições semelhantes. Para refinar, use > 20 fotos com boa luz e ângulos variados.
-
 ##### (C) Realize a calibração de uma outra câmera pessoal:
 
 Utilizamos uma câmera pessoal, imagens disponíveis em: `arquivos/camera-pessoal`
@@ -249,7 +245,7 @@ Utilizamos uma câmera pessoal, imagens disponíveis em: `arquivos/camera-pessoa
 **4. Diferenças para a webcam (item B)**
 - **Focais aproximadamente 5× maiores**, isso pode indicar um sensor de maior resolução.  
 - **Distorção radial bem mais forte** se aplica a lente wide-angle.  
-- Aspect ratio ≈ 1 e skew quase 0 em ambas.  
+- Aspect ratio aproximadamente 1 e skew quase 0 em ambas as câmeras.  
 
 > **Rᵢ** e **tᵢ** variam com cada foto (pose do tabuleiro) → **extrínsecos**.  
 > **K** e **d** são fixos para a câmera → **intrínsecos**.
@@ -258,7 +254,7 @@ Utilizamos uma câmera pessoal, imagens disponíveis em: `arquivos/camera-pessoa
 
 ### ANÁLISE E DISCUSSÃO DOS ESTUDOS REALIZADOS
 
-A calibração apresentou erro-reprojeção médio de 0,3 px para a webcam (15 imagens) e 0,5 px para a câmera pessoal (10 imagens); As focais expressas em pixels ficaram cerca de cinco vezes maiores na câmera pessoal, reflexo direto de um sensor de maior densidade; porém, embora a distância focal física permaneça a mesma, qualquer conversão de pixels para milímetros deve considerar o tamanho do pixel de cada sensor quando se busca medir em unidades absolutas. A distorção radial também divergiu consideravelmente bastante: a webcam exibiu |k₁| em torno de 0,04 (lente mais estreita), enquanto a câmera pessoal apresentou k₁ ≈ –0,02 com k₃ ≈ –1,25, típico de lentes wide-angle, o que poderia induzir erros superiores a 15 px nas bordas caso não fosse corrigido. Em ambas as câmeras o aspect ratio manteve-se muito próximo de 1 e o skew praticamente nulo, indicando pixels quadrados e montagem centrada; o ponto principal deslocou-se menos de 3 % do centro físico, variação considerada normal de fabricação. Por fim, vale lembrar que os vetores extrínsecos Rᵢ e tᵢ definem a pose única do tabuleiro em cada foto e variam sempre que a cena muda, e ao passo que a matriz intrínseca K e o vetor de distorção d permanecem constantes enquanto a câmera não sofrer alterações mecânicas ou ópticas.
+A calibração apresentou erro-reprojeção médio de 0,3 px para a webcam (15 imagens) e 0,5 px para a câmera pessoal (10 imagens); As focais expressas em pixels ficaram cerca de cinco vezes maiores na câmera pessoal, reflexo direto de um sensor de maior densidade; porém, embora a distância focal física permaneça a mesma, qualquer conversão de pixels para milímetros deve considerar o tamanho do pixel de cada sensor quando se busca medir em unidades absolutas. A distorção radial também divergiu consideravelmente bastante: a webcam exibiu |k₁| em torno de 0,04 (lente mais estreita), enquanto a câmera pessoal apresentou k₁ aproximadamente –0,02 com k₃ aproximadamente –1,25, típico de lentes wide-angle, o que poderia induzir erros superiores a 15 px nas bordas caso não fosse corrigido. Em ambas as câmeras o aspect ratio manteve-se muito próximo de 1 e o skew praticamente nulo, indicando pixels quadrados e montagem centrada; o ponto principal deslocou-se menos de 3 % do centro físico, variação considerada normal de fabricação. Por fim, vale lembrar que os vetores extrínsecos Rᵢ e tᵢ definem a pose única do tabuleiro em cada foto e variam sempre que a cena muda, e ao passo que a matriz intrínseca K e o vetor de distorção d permanecem constantes enquanto a câmera não sofrer alterações mecânicas ou ópticas.
 
 ### CONCLUSÕES
 
