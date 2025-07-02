@@ -17,8 +17,12 @@
 
 ### INTRODUÇÃO
 
-
----
+A calibração de câmeras é uma etapa essencial em visão computacional.
+Nesse relatório estimamos matriz intrínseca e coeficientes de distorção que descrevem com precisão o sistema óptico.
+Esses parâmetros aproximam o caminho da luz do objeto ao sensor, relacionando coordenadas 3-D com projeções 2-D.
+Sem essa correção, distorções radial e tangencial comprometem medidas, reconstrução 3-D entre outros.
+Aqui detalhamos o processo de calibração com padrão planar, analisamos resultados de duas câmeras e comparamos seus parâmetros.
+Ao final, avaliamos o impacto da calibração na retificação de imagens e discutimos implicações nas aplicações práticas do laboratório.
 
 ### PROCEDIMENTOS EXPERIMENTAIS
 
