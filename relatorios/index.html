@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Relatório – Lab 2</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.8.1/github-markdown.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github.min.css" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.8.1/github-markdown.min.css"/>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/stackoverflow-light.min.css"/>
 
     <style>
       main{
@@ -17,16 +20,19 @@
       .markdown-body{
         margin-left:auto;
         margin-right:auto;
+        color-scheme:light;
       }
+
+      
       #toTop{
         position:fixed;
         bottom:1.25rem;
         right:1.25rem;
         display:none;
-        padding:0.5rem 0.8rem;
+        padding:.5rem .8rem;
         font-size:1rem;
         border:none;
-        border-radius:0.5rem;
+        border-radius:.5rem;
         background:#4b5563;
         color:#fff;
         cursor:pointer;
@@ -34,25 +40,8 @@
         transition:opacity .2s ease-in-out;
       }
       #toTop:hover{opacity:.85;}
+
       html.smooth-scroll{scroll-behavior:smooth;}
-
-      html,body,.markdown-body{
-        background:#fff !important;
-        color:#24292f !important;
-        color-scheme:light !important;
-      }
-
-      pre,code,.hljs{
-        background:#f6f8fa !important;
-        color:#24292f !important;
-      }
-
-      @media(prefers-color-scheme:dark){
-        html,body,.markdown-body,pre,code,.hljs{
-          background:#fff !important;
-          color:#24292f !important;
-        }
-      }
     </style>
   </head>
 
@@ -70,11 +59,13 @@
       fetch('lab2.md')
         .then(r=>{if(!r.ok)throw Error('lab2.md não encontrado');return r.text();})
         .then(md=>{
-          document.getElementById('post').innerHTML=marked.parse(md,{mangle:false,headerIds:false});
+          document.getElementById('post').innerHTML=
+            marked.parse(md,{mangle:false,headerIds:false});
           hljs.highlightAll();
         })
         .catch(err=>{
-          document.getElementById('post').innerHTML='<p style="color:red;">'+err.message+'</p>';
+          document.getElementById('post').innerHTML=
+            '<p style="color:red;">'+err.message+'</p>';
         });
 
       const btn=document.getElementById('toTop');
