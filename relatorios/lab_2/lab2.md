@@ -107,7 +107,90 @@ Configura algumas das imagens utilizadas:
 
 ##### (B) Calibração da sua webcam com a captura de suas próprias imagens de calibração
 
+![alt text](procedimentoB.png)
+
+###### Calibração de WebCam
+
+Imagem de exemplo
+
+<img src="./arquivos/fotos-lab/pedro0.jpg" width=420>
+
+### 1. Parâmetros obtidos  
+| Símbolo | Forma | Valores |
+|---------|-------|---------|
+| **K** (matriz intrínseca) | 3 × 3 | `[[697.4009, 0, 323.9869], [0, 696.5914, 259.8079], [0, 0, 1]]` |
+| **d** (dist.)            | 1 × 5 | `[0.0359, -0.0723, -0.0036, 0.0059, 0.6043]` |
+| **rvecs**                | 15 × 3 | listados abaixo |
+| **tvecs**                | 15 × 3 | listados abaixo |
+
+**rvecs** (um vetor por imagem, veja as imagens em arquivos/fotos-lab, imagens de 1 a 15 e seus respectivos valores)  
+
+```
+[-0.09041156 -0.26927099 -0.28695633]
+[-0.21370958 -0.23077621 -0.00301174]
+[-0.84262697 -0.21531148 0.05646718]
+[-0.17281096 -0.11442257 0.55440143]
+[-0.08273542 -0.39150588 -0.34416131]
+[-0.03577198 -0.44715039 -0.36395749]
+[ 0.00263941 -0.69465355 -0.40609079]
+[-0.21511114 0.06546202 -1.50003925]
+[-0.19179765 -0.08090819 0.02710206]
+[-0.11176731 -0.31746541 0.70260815]
+[-0.38333264 -0.13952210 1.12756964]
+[-0.23459730 -0.12466176 0.08032624]
+[-0.42734584 -0.06745425 0.89230602]
+[-0.42457259 -0.21903711 -0.73775545]
+[-0.74546731 -0.51204921 1.49235451]
+```
+
+**tvecs** (um vetor por imagem)  
+
+```
+[-4.55945281 -3.31698069 17.14627374]
+[-3.88433300 -4.28650135 17.07900246]
+[-4.26542183 -2.27902247 18.82139640]
+[-1.72956472 -5.02783187 16.96567802]
+[-4.91584137 -3.11409920 17.38609020]
+[-4.89702768 -2.98869145 17.29341610]
+[-4.55276306 -2.91309147 16.96279789]
+[-3.58208446 2.42388280 15.62655617]
+[-4.68016001 -3.94852737 19.12934706]
+[ 0.53199139 -4.77088985 15.55006244]
+[ 0.62725994 -3.85432728 17.62836597]
+[-4.34931678 -4.28182683 15.77199432]
+[-0.95956054 -4.02956003 19.93523509]
+[-5.12746080 -2.02592924 16.25751007]
+[ 1.04650525 -3.06009841 16.24138367]
+```
+
+**Parâmetros intrínsecos analisados**
+| Parâmetro      | Cálculo   | Valor |
+|----------------|-----------|-------|
+| Focal x        | `K₀₀`     | **697.4 px** |
+| Focal y        | `K₁₁`     | **696.6 px** |
+| Aspect ratio   | `f_y/f_x` | **0.999** |
+| Skew           | `K₀₁`     | **0** |
+| Ponto principal| `(K₀₂,K₁₂)` | **(323.99 px, 259.81 px)** |
+
+**Diferenças vs. Item A** 
+* Variações menores que 3 % em focais/ponto principal, e consideramos algo esperado, já que as fotos estão em poses/posições distintas.  
+* Coeficientes radiais maiores aqui, tabuleiro aparece mais nas bordas, captando melhor a curvatura da lente.
+
+**Por que vários **R** e **t**?**
+
+Cada foto traz uma pose diferente do tabuleiro:  
+
+* **Rᵢ**: rotação do tabuleiro para a câmera na imagem *i*.  
+* **tᵢ**: translação da origem do tabuleiro até a câmera na imagem *i*.  
+
+São **extrínsecos** (pois mudam a cada foto); **K** e **d** são **intrínsecos** (fixos, independente da foto).
+
+**De forma rápida, concluímos pra esse teste**
+
+Com **K** + **d** você pode undistort frames da webcam ou projetar objetos 3-D (AR) com erro < 1 px em condições semelhantes. Para refinar, use > 20 fotos com boa luz e ângulos variados.
+
 ##### (C) Realize a calibração de uma outra câmera pessoal:
+
 
 ### ANÁLISE E DISCUSSÃO DOS ESTUDOS REALIZADOS
 
