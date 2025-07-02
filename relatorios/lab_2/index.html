@@ -1,3 +1,44 @@
-<html>
-    
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Relatório 2</title>
+
+  <!-- Estilos simples – ajuste como quiser -->
+  <style>
+    body{
+      font-family: system-ui, sans-serif;
+      margin: 0 auto;
+      max-width: 720px;
+      padding: 1.5rem;
+      line-height: 1.6;
+    }
+    h1,h2,h3 { line-height: 1.2; }
+    pre, code { background:#f4f4f4; padding:2px 4px; border-radius:4px; }
+  </style>
+</head>
+<body>
+  <article id="post"></article>
+
+  <!-- Biblioteca Marked (converter Markdown) -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <script>
+    fetch('lab2.md')
+      .then(resp => {
+        if (!resp.ok) throw new Error('Não encontrei lab2.md');
+        return resp.text();
+      })
+      .then(md => {
+        // Converte markdown → HTML
+        const html = marked.parse(md, { mangle:false, headerIds:false });
+        document.getElementById('post').innerHTML = html;
+      })
+      .catch(err => {
+        document.getElementById('post').innerHTML =
+          '<p style="color:red;">Erro: ' + err.message + '</p>';
+      });
+  </script>
+</body>
 </html>
