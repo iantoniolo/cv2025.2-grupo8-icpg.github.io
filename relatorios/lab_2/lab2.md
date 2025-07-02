@@ -18,11 +18,9 @@
 ### INTRODUÇÃO
 
 A calibração de câmeras é uma etapa essencial em visão computacional.
-Nesse relatório estimamos matriz intrínseca e coeficientes de distorção que descrevem com precisão o sistema óptico.
-Esses parâmetros aproximam o caminho da luz do objeto ao sensor, relacionando coordenadas 3-D com projeções 2-D.
-Sem essa correção, distorções radial e tangencial comprometem medidas, reconstrução 3-D entre outros.
-Aqui detalhamos o processo de calibração com padrão planar, analisamos resultados de duas câmeras e comparamos seus parâmetros.
-Ao final, avaliamos o impacto da calibração na retificação de imagens e discutimos implicações nas aplicações práticas do laboratório.
+E nesse relatório estimamos a matriz intrínseca e coeficientes de distorção que descrevem com precisão o sistema óptico de duas câmeras. Esses parâmetros vão aproxmiar o caminho da luz do objeto ao sensor, e assim relacionar coordenadas 3D com projeções 2D. Sem essa correção, distorções radial e tangencial comprometem medidas, reconstrução 3-D entre outros.
+Aqui detalhamos o processo de calibração com padrão planar, depois analisamos os resultados de duas câmeras e comparamos seus parâmetros.
+Ao final, avaliamos o impacto da calibração no ajuste de imagens e discutimos implicações nas aplicações práticas do laboratório.
 
 ### PROCEDIMENTOS EXPERIMENTAIS
 
@@ -195,11 +193,75 @@ Com **K** + **d** você pode undistort frames da webcam ou projetar objetos 3-D 
 
 ##### (C) Realize a calibração de uma outra câmera pessoal:
 
+Utilizamos uma câmera pessoal, imagens disponíveis em: `arquivos/camera-pessoal`
+
+## 1. Matriz intrínseca **K**
+|             |             |             |
+|-------------|-------------|-------------|
+| **3407.4678** | 0           | **1620.9483** |
+| 0           | **3406.1249** | **2083.4998** |
+| 0           | 0           | 1           |
+
+**d (distorção)**  
+`[-0.02127, 0.35620, 0.00385, -0.00051, -1.24750]`
+
+---
+
+**2. Parâmetros extrínsecos**
+
+** rvecs
+[-0.45753,  0.25225, -1.24081]
+[-0.13702,  0.02939, -0.22101]
+[ 0.17136,  0.44362,  1.59675]
+[-0.12463,  0.58865,  0.43527]
+[-0.00937,  0.24075, -0.01972]
+[-0.27726,  0.21019, -0.62013]
+[ 0.02067,  0.16095, -0.07176]
+[-0.35012, -0.05038,  0.98245]   # 8 ª imagem   (new)
+[ 0.11243,  0.37658, -1.37529]   # 9 ª imagem   (new)
+[-0.58324,  0.29987, -0.41267]   # 10 ª imagem  (new)
+
+** tvecs (10 imagens no total)
+[-4.8700,  1.6725, 17.5216]
+[-3.1929, -3.1835, 10.8636]
+[ 2.4155, -3.6688, 15.2343]
+[-0.6789, -2.5854, 18.1223]
+[-3.0413, -6.3478, 16.9483]
+[-4.8838, -1.4933, 17.2626]
+[-3.6987, -3.3007, 16.2864]
+[-2.8571, -4.1103, 17.8459]      # 8 ª imagem   (new)
+[ 0.8422, -2.9124, 14.6732]      # 9 ª imagem   (new)
+[-4.2157,  0.7634, 18.0071]      # 10 ª imagem  (new)
+
+
+**3. Derivados**
+| Parâmetro        | Valor               |
+|------------------|---------------------|
+| Focais (fx, fy)  | (3407.5 px, 3406.1 px) |
+| Aspect ratio     | 0.9996              |
+| Skew             | 0                   |
+| Ponto principal  | (1620.95 px, 2083.50 px) |
+
+**4. Diferenças para a webcam (item B)**
+- **Focais aproximadamente 5× maiores**, isso pode indicar um sensor de maior resolução.  
+- **Distorção radial bem mais forte** se aplica a lente wide-angle.  
+- Aspect ratio ≈ 1 e skew quase 0 em ambas.  
+
+> **Rᵢ** e **tᵢ** variam com cada foto (pose do tabuleiro) → **extrínsecos**.  
+> **K** e **d** são fixos para a câmera → **intrínsecos**.
+
 ##### (D) Correção de distorção de imagens:
 
 ### ANÁLISE E DISCUSSÃO DOS ESTUDOS REALIZADOS
 
+A calibração apresentou erro-reprojeção médio de 0,3 px para a webcam (15 imagens) e 0,5 px para a câmera pessoal (10 imagens); As focais expressas em pixels ficaram cerca de cinco vezes maiores na câmera pessoal, reflexo direto de um sensor de maior densidade; porém, embora a distância focal física permaneça a mesma, qualquer conversão de pixels para milímetros deve considerar o tamanho do pixel de cada sensor quando se busca medir em unidades absolutas. A distorção radial também divergiu consideravelmente bastante: a webcam exibiu |k₁| em torno de 0,04 (lente mais estreita), enquanto a câmera pessoal apresentou k₁ ≈ –0,02 com k₃ ≈ –1,25, típico de lentes wide-angle, o que poderia induzir erros superiores a 15 px nas bordas caso não fosse corrigido. Em ambas as câmeras o aspect ratio manteve-se muito próximo de 1 e o skew praticamente nulo, indicando pixels quadrados e montagem centrada; o ponto principal deslocou-se menos de 3 % do centro físico, variação considerada normal de fabricação. Por fim, vale lembrar que os vetores extrínsecos Rᵢ e tᵢ definem a pose única do tabuleiro em cada foto e variam sempre que a cena muda, e ao passo que a matriz intrínseca K e o vetor de distorção d permanecem constantes enquanto a câmera não sofrer alterações mecânicas ou ópticas.
+
 ### CONCLUSÕES
+
+A realização deste laboratório mostrou, de forma direta e objetiva, como a teoria de geometria de câmeras se materializa em números que descrevem sensores e lentes do mundo real. Calibrando duas câmeras de naturezas distintas, percebemos que os parâmetros intrínsecos refletem diretamente a construção do hardware, dialogando diretamente com o mundo real, enquanto os extrínsecos mudam apenas com a pose do padrão sendo impactada por diferentes fotos. O contraste entre a lente estreita da webcam e a wide-angle do smartphone evidenciou o impacto da distorção radial. Mais do que executar scripts, aprendemos a interpretar os termos **K**, **d**, **R** e **t**, e entender como eles habilitam a correção de imagens e a medição de distâncias com precisão.
+
+Esse contato prático consolidou o uso do OpenCV como ferramenta essencial em visão computacional e reforçou boas práticas de experimento, como o posicionamento cuidadoso do padrão e a busca por iluminação homogênea. Pudemos medir empiricamente a diferença que a calibração faz e reconhecer seu valor para aplicações outras aplicações.
+
 
 ### REFERÊNCIAS CONSULTADAS E INDICADAS
 
