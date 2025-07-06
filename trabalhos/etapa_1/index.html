@@ -1,28 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etapa 1 | Grupo 8 - ICPG</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style> :root { --primary: #2563eb; --secondary: #111827; --accent: #e11d48; --bg: #f5f6fa; --white: #fff; --gray: #6b7280; --border: #e5e7eb; --radius: 8px; --shadow: 0 2px 8px rgba(0, 0, 0, 0.04); --transition: 0.2s; } * { box-sizing: border-box; margin: 0; padding: 0; } html, body { background: var(--bg); color: var(--secondary); font-family: 'Roboto', sans-serif; font-size: 17px; line-height: 1.6; min-height: 100vh; } body { display: flex; flex-direction: column; min-height: 100vh; } main.container { max-width: 900px; margin: 0 auto; background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); padding: 36px 24px 24px 24px; margin-bottom: 32px; margin-top: 24px; } section { margin-bottom: 36px; } h2 { font-size: 1.4rem; font-weight: 600; color: var(--primary); margin-bottom: 18px; letter-spacing: 0.2px; } h3 { font-size: 1.1rem; font-weight: 500; color: var(--secondary); margin-bottom: 12px; } h4 { font-size: 1rem; font-weight: 500; color: var(--primary); margin-bottom: 8px; } ul { margin-left: 18px; margin-bottom: 12px; } li { margin-bottom: 6px; } .entrevista, .cenario, .requisitos, .referencias, .section { background: #f3f4f6; padding: 18px 14px; border-radius: var(--radius); margin-bottom: 18px; } table { width: 100%; border-collapse: collapse; margin-bottom: 18px; } th, td { padding: 8px 10px; border: 1px solid var(--border); text-align: left; } th { background: var(--primary); color: var(--white); } tr:nth-child(even) { background: #f9fafb; } tr:nth-child(odd) { background: #f3f4f6; } footer.rodape { text-align: center; padding: 24px 0 18px 0; color: var(--gray); font-size: 0.98em; border-top: 1px solid var(--border); background: var(--white); margin-top: auto; } @media (max-width: 700px) { main.container { padding-left: 8px; padding-right: 8px; } main.container { padding: 18px 6px 12px 6px; } h2 { font-size: 1.1rem; } h3 { font-size: 1rem; } .entrevista, .cenario, .requisitos, .referencias, .section { padding: 12px 7px; } } </style>
+</head>
+<body>
 <main class="container">
     <section id="trabalho" class="content-section">
         <h2>Etapa 1</h2>
         <section id="etapa1-section">
-            <h3>Proposta de Sistema Simples para Contagem Automática</h3>
-            <section class="cenario">
-                <h4>Cenário de Aplicação Proposto</h4>
-                <div>
-                    <b>Contexto:</b> Tanto no armazém quanto na obra, existe a necessidade de contar rapidamente
-                    quantos itens ou pessoas de cada categoria estão presentes em uma lista.<br>
-                    <b>Problema a ser Resolvido:</b> Automatizar a contagem de categorias em listas simples
-                    (planilhas), evitando erros e economizando tempo.<br>
-                    <b>Objetivo:</b> Desenvolver um programa que leia uma planilha (CSV) com uma coluna de categoria
-                    (tipo de pacote ou função do funcionário) e exiba a contagem de cada categoria.
-                </div>
-            </section>
+            <h3>Proposta de Sistemas Simples com Visão Computacional</h3>
+<section class="cenario">
+    <h4>Cenários de Aplicação Propostos</h4>
+    <div>
+        <b>Contexto:</b> Em ambientes como armazéns e canteiros de obras, há necessidade de automatizar tarefas repetitivas que envolvem monitoramento de pessoas e veículos.<br>
+        <b>Problema a ser Resolvido:</b> Automatizar (1) a contagem de pessoas presentes em um ambiente utilizando câmeras e (2) o registro automático das placas de veículos que entram ou saem de um local, ambos evitando erros humanos e otimizando processos.<br>
+        <b>Objetivo:</b> Desenvolver dois sistemas simples utilizando Python e OpenCV:
+        <ul>
+            <li>Um sistema para contar automaticamente, em tempo real, o número de pessoas presentes em um ambiente usando imagens de câmeras.</li>
+            <li>Um sistema para capturar e ler automaticamente as placas dos veículos que passam por uma câmera, registrando as informações de forma prática.</li>
+        </ul>
+    </div>
+</section>
             <section class="requisitos">
-                <h4>Requisitos do Sistema</h4>
-                <ul>
-                    <li>Ler um arquivo CSV com uma coluna de categoria.</li>
-                    <li>Contar automaticamente quantos itens existem de cada categoria.</li>
-                    <li>Exibir o resultado de forma clara e simples.</li>
-                    <li>Ser fácil de usar e adaptar para diferentes listas.</li>
-                </ul>
-            </section>
+    <h4>Requisitos dos Sistemas</h4>
+    <ul>
+        <li>Utilizar uma câmera comum (webcam ou câmera de segurança) para capturar imagens/vídeos.</li>
+        <li>Detectar e contar automaticamente o número de pessoas presentes no ambiente em tempo real.</li>
+        <li>Detectar e ler automaticamente as placas dos veículos que passam pela câmera, registrando o texto da placa.</li>
+        <li>Exibir os resultados de forma clara e simples na tela do computador.</li>
+        <li>Ser fácil de usar e adaptar para diferentes ambientes e necessidades.</li>
+    </ul>
+</section>
         </section>
     </section>
 </main>
+<footer class="rodape">
+    &copy; 2025 Grupo 8 - ICPG | Visão Computacional - UFABC<br>
+    <img src="https://www.ufabc.edu.br/images/identidade-visual/ufabc-logo-horizontal-cor.png" alt="UFABC Logo" height="32" style="margin-top:10px;">
+</footer>
+</body>
+</html>
