@@ -20,6 +20,48 @@
 
 ### PROCEDIMENTOS EXPERIMENTAIS
 
+#### (A) Obtenção dos códigos do exemplo da câmera estéreo com OpenCV
+
+Para executar os procedimentos, baixe o seguinte código de exemplo: https://github.com/spmallick/learnopencv/tree/master/stereo-camera
+
+#### (B) Execute o exemplo com as imagens fornecidas
+
+A calibração de câmeras consiste em estimar os parâmetros intrínsecos e extrínsecos de uma ou mais câmeras com base em imagens de um padrão conhecido, como um tabuleiro de xadrez. A calibração é essencial para corrigir distorções nas imagens capturadas pela câmera, além de ajudar a determinar as relações espaciais entre as câmeras em um sistema estéreo como o utilizado em laboratório.
+
+Parâmetros necessários para a calibração de câmeras:
+
+- Parâmetros intrínsecos:
+
+Matriz da câmera (matriz intrínseca): Contém informações sobre a lente da câmera, como a distância focal (f_x, f_y) e o ponto principal (normalmente o centro da imagem, c_x, c_y).
+
+CameraMatrix=[fx0cx0fycy001]
+
+CameraMatrix=​fx​00​0fy​0​cx​cy​1​
+            
+Coeficientes de distorção: Corrigem distorções causadas pela lente da câmera (como distorções radiais e tangenciais). Os coeficientes comuns são:
+
+k1,k2,k3k1​,k2​,k3​ (distorção radial)
+
+p1,p2p1​,p2​ (distorção tangencial)
+
+Parâmetros extrínsecos:
+
+Matriz de rotação (R): Descreve a orientação relativa entre a câmera e o sistema de coordenadas do mundo.
+
+Vetor de translação (T): Descreve a posição relativa da câmera em relação ao sistema de coordenadas do mundo.
+
+Para um sistema estéreo, os parâmetros adicionais incluem:
+
+Matriz de rotação entre as câmeras (R): Define a rotação relativa entre a câmera esquerda e a direita.
+
+Vetor de translação entre as câmeras (T): Define a distância e direção entre as duas câmeras.
+
+Esses parâmetros permitem que você reconstrua a cena 3D a partir de imagens 2D capturadas por cada câmera.
+
+#### (C) Execute a Calibração da sua câmera estéreo (construída com as webcams) pela
+captura de suas próprias imagens de calibração e imagens de teste
+
+#### (D) Realize a gravação de um video 3D com sua câmera estéreo
 
 ### ANÁLISE E DISCUSSÃO DOS ESTUDOS REALIZADOS
 
