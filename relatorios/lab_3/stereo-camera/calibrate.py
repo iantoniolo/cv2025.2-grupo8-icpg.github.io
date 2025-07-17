@@ -81,7 +81,7 @@ retS, new_mtxL, distL, new_mtxR, distR, Rot, Trns, Emat, Fmat = cv2.stereoCalibr
 
 # Once we know the transformation between the two cameras we can perform stereo rectification
 # StereoRectify function
-rectify_scale= 1 # if 0 image croped, if 1 image not croped
+rectify_scale= 0 # if 0 image croped, if 1 image not croped
 rect_l, rect_r, proj_mat_l, proj_mat_r, Q, roiL, roiR= cv2.stereoRectify(new_mtxL, distL, new_mtxR, distR,
                                                  imgL_gray.shape[::-1], Rot, Trns,
                                                  rectify_scale,(0,0))
