@@ -17,7 +17,7 @@
 
 ### INTRODUÇÃO
 
-Este relatório detalha os experimentos realizados no Laboratório 3, focado no estudo e aplicação da estereoscopia em visão computacional. A estereoscopia é a técnica que permite a percepção de profundidade a partir de duas imagens capturadas de pontos de vista ligeiramente diferentes, de forma análoga à visão binocular humana. O objetivo deste trabalho foi construir e calibrar um sistema de câmera estéreo de baixo custo, utilizando duas webcams, para compreender na prática os conceitos de geometria epipolar e reconstrução 3D. Ao longo deste documento, serão descritos os procedimentos para a montagem do aparato experimental, a calibração individual e conjunta das câmeras para obtenção dos parâmetros intrínsecos e extrínsecos, e a geração de imagens anaglíficas e mapas de disparidade. A análise dos resultados demonstrará a viabilidade de se criar um sistema de percepção de profundidade e as implicações dos parâmetros de calibração na qualidade da reconstrução tridimensional.
+Este relatório detalha os experimentos realizados no Laboratório 3 (Câmera Estéreo), focado no estudo e aplicação da estereoscopia em visão computacional. A estereoscopia é a técnica que permite a percepção de profundidade a partir de duas imagens capturadas de pontos de vista ligeiramente diferentes, de forma análoga à visão humana. O objetivo deste trabalho foi construir e calibrar um sistema de câmera estéreo de baixo custo, utilizando duas webcams providas em laboratório, para compreender na prática os conceitos de geometria epipolar e reconstrução 3D. Ao longo deste documento, serão descritos os procedimentos para a montagem do aparato experimental, a calibração individual e conjunta das câmeras para obtenção dos parâmetros intrínsecos e extrínsecos, e a geração de imagens. A análise dos resultados demonstrará a viabilidade de se criar um sistema de percepção de profundidade e as implicações dos parâmetros de calibração na qualidade da reconstrução tridimensional.
 
 #### Objetivos:
 - Entender os conceitos de Estereoscopia e Geometria Epipolas.
@@ -203,10 +203,329 @@ retL, cornersL = cv2.findChessboardCorners(outputL,(8,6),None)
 cv_file = cv2.FileStorage("./data-lab/params_py.xml", cv2.FILE_STORAGE_WRITE)
 ```
 
-> Execute o script `calibrate.py` para realizar a calibração das câmeras estéreo. O script irá processar as imagens capturadas, calcular os parâmetros intrínsecos e extrínsecos, e salvar os resultados em um arquivo XML.
+> Execute o script `calibrate.py` para realizar a calibração das câmeras estéreo. O script irá processar as imagens capturadas, calcular os parâmetros intrínsecos e extrínsecos, e salvar os resultados no arquivo XML indicado na linha acima.
 
 ```shell
 python3 calibrate.py
+```
+
+**Responda: liste todos os parâmetros e valores obtidos para sua câmera estéreo, colocando-os nas formas de matrizes e vetores. Quais destes parâmetros forma salvos no arquivo de parâmetros de calibração (xml)?**
+
+> Os parâmetros obtidos para a câmera estéreo foram os seguintes:
+
+> **Parâmetros intrínsecos (câmera esquerda)**
+
+**Matriz intrínseca (K)**:
+
+```
+[[677.73412452   0.         307.55974464]
+ [  0.         679.11055189 215.06111841]
+ [  0.           0.           1.        ]]
+```
+
+**dist**:
+
+```
+[[ 9.44064482e-02 -1.02738043e+00 -2.87071648e-03 -8.87143372e-04 4.25419033e+00]]
+```
+
+**rvecs**:
+
+```
+(array([[-0.18726085],
+       [-0.1471088 ],
+       [ 0.07278578]]), array([[-0.08479358],
+       [-0.21444249],
+       [ 0.06833422]]), array([[-0.1161428 ],
+       [-0.19247522],
+       [ 0.07515873]]), array([[-0.10871448],
+       [-0.20476947],
+       [ 0.07130746]]), array([[-0.12125288],
+       [-0.22100292],
+       [ 0.07579088]]), array([[-0.15515976],
+       [-0.21326652],
+       [ 0.05983969]]), array([[-0.16168664],
+       [-0.22186651],
+       [ 0.06242239]]), array([[-0.18518884],
+       [-0.10420233],
+       [ 0.05875823]]), array([[-0.27565159],
+       [-0.01013508],
+       [-0.06055519]]), array([[-4.18249557e-01],
+       [-2.67449122e-01],
+       [-2.57701520e-04]]), array([[-0.18515866],
+       [-0.08204098],
+       [-0.00902972]]), array([[-0.17829982],
+       [-0.19904146],
+       [ 0.12443069]]), array([[-0.11727435],
+       [-0.21784396],
+       [-0.07667582]]), array([[-0.15950268],
+       [-0.24466782],
+       [-0.03354782]]))
+```
+
+**tvecs**:
+
+```
+(array([[-4.00258862],
+       [-0.98543208],
+       [20.5407316 ]]), array([[-3.65888606],
+       [-1.4118987 ],
+       [15.38243461]]), array([[-3.96383953],
+       [-1.45569517],
+       [15.70983332]]), array([[-3.98282811],
+       [-1.37375808],
+       [15.76913313]]), array([[-3.97610417],
+       [-1.35312241],
+       [16.07602975]]), array([[-4.51885247],
+       [-1.48594896],
+       [16.47496932]]), array([[-4.3727964 ],
+       [-1.55823785],
+       [16.70674578]]), array([[-3.14332462],
+       [-2.0476241 ],
+       [18.26171255]]), array([[-2.90593551],
+       [-0.97678094],
+       [20.56173821]]), array([[-3.48937015],
+       [-1.67685431],
+       [16.85178941]]), array([[-3.27081821],
+       [-2.30339502],
+       [17.21697277]]), array([[-3.39743476],
+       [-1.86045594],
+       [17.61692777]]), array([[-4.28046869],
+       [-0.71486803],
+       [19.42886085]]), array([[-2.75866594],
+       [-1.3680894 ],
+       [19.76986144]]))
+```
+
+> **Parâmetros intrínsecos (câmera direita)**
+
+**Matriz intrínseca (K) - direita**:
+
+```
+[[662.20625692   0.         303.89626902]
+ [  0.         663.65175243 242.31022247]
+ [  0.           0.           1.        ]]
+```
+
+**dist - direita**:
+
+```
+[[-1.26556519e-02  8.25228739e-01 -2.11672103e-03 -3.87764451e-03 -5.16015391e+00]]
+```
+
+**rvecs**:
+
+```
+(array([[-0.11775436],
+       [-0.02568732],
+       [ 0.07096546]]), array([[-0.01975621],
+       [-0.09092623],
+       [ 0.05700549]]), array([[-0.04723013],
+       [-0.07010609],
+       [ 0.06659752]]), array([[-0.0425551 ],
+       [-0.08123578],
+       [ 0.06217378]]), array([[-0.05498146],
+       [-0.09493236],
+       [ 0.06663226]]), array([[-0.08924682],
+       [-0.08957561],
+       [ 0.05322777]]), array([[-0.09241702],
+       [-0.0974973 ],
+       [ 0.05632886]]), array([[-0.11632127],
+       [ 0.01772641],
+       [ 0.0585464 ]]), array([[-0.20703201],
+       [ 0.11334338],
+       [-0.05178392]]), array([[-0.34730923],
+       [-0.13988738],
+       [ 0.00824827]]), array([[-0.11239395],
+       [ 0.04454306],
+       [-0.00789479]]), array([[-0.10436183],
+       [-0.07620069],
+       [ 0.11896787]]), array([[-0.06395512],
+       [-0.08928769],
+       [-0.08528989]]), array([[-0.09707344],
+       [-0.11571809],
+       [-0.04067226]]))
+```
+
+**tvecs**:
+
+```
+(array([[-3.46781001],
+       [-2.49181903],
+       [20.26492569]]), array([[-3.77577532],
+       [-2.54816938],
+       [15.21901132]]), array([[-4.0320972 ],
+       [-2.61317282],
+       [15.55499563]]), array([[-4.03357237],
+       [-2.53775742],
+       [15.62615583]]), array([[-3.98475441],
+       [-2.53503718],
+       [15.92701444]]), array([[-4.45893279],
+       [-2.69723497],
+       [16.36256548]]), array([[-4.27958184],
+       [-2.78425209],
+       [16.55234704]]), array([[-2.85571823],
+       [-3.38638036],
+       [17.8937489 ]]), array([[-2.32765742],
+       [-2.50073183],
+       [20.16242011]]), array([[-3.36467159],
+       [-2.91296352],
+       [16.58793849]]), array([[-3.10783497],
+       [-3.5957032 ],
+       [16.86303783]]), array([[-3.17202942],
+       [-3.15277506],
+       [17.297533  ]]), array([[-3.78496225],
+       [-2.14030538],
+       [19.24359366]]), array([[-2.23864618],
+       [-2.8190647 ],
+       [19.33709621]]))
+```
+
+> **Parâmetros extrínsecos**
+
+**R**:
+
+```
+[[ 0.96600108  0.03046948  0.2567363 ]
+ [-0.02231146  0.99915113 -0.03462975]
+ [-0.25757352  0.02772421  0.96586089]]
+```
+
+**T**:
+
+```
+[[-3.24048731]
+ [-0.79568461]
+ [-3.97249102]]
+```
+
+**E**:
+
+```
+[[ 0.11631519  3.94705917 -0.90608699]
+ [-4.67209432 -0.03119977  2.1099773 ]
+ [ 0.8409322  -3.21349247  0.31649837]]
+```
+
+**F**:
+
+```
+[[ 1.18900200e-06  4.07439858e-05 -1.54862954e-02]
+ [-4.14411985e-05 -2.79457547e-07  2.57228714e-02]
+ [ 1.40272153e-02 -2.67164065e-02  1.00000000e+00]]
+```
+
+> **Parâmetros de retificação e reprojeção**
+
+**Matrizes de retificação (R1, R2)**:
+
+```
+Rectification transformation (left): [[ 0.40273389  0.19350308  0.89462952]
+ [-0.17179171  0.97600884 -0.13376976]
+ [-0.89905118 -0.09981632  0.42631406]]
+```
+
+```
+Rectification transformation (right): [[ 0.62462118  0.15337244  0.76571879]
+ [-0.17055605  0.98364567 -0.05789491]
+ [-0.76207546 -0.09443558  0.64056452]]
+```
+
+**Matrizes de projeção (P1, P2)**:
+
+```
+Projection matrix (left): [[ 6.21037622e+02  0.00000000e+00 -5.96954103e+03  0.00000000e+00]
+ [ 0.00000000e+00  6.21037622e+02  7.66792057e+02  0.00000000e+00]
+ [ 0.00000000e+00  0.00000000e+00  1.00000000e+00  0.00000000e+00]]
+```
+
+```
+Projection matrix (right): [[ 6.21037622e+02  0.00000000e+00 -5.96954103e+03 -3.22189608e+03]
+ [ 0.00000000e+00  6.21037622e+02  7.66792057e+02  0.00000000e+00]
+ [ 0.00000000e+00  0.00000000e+00  1.00000000e+00  0.00000000e+00]]
+```
+
+**Matriz Q**:
+
+```
+Q: [[ 1.00000000e+00  0.00000000e+00  0.00000000e+00  5.96954103e+03]
+ [ 0.00000000e+00  1.00000000e+00  0.00000000e+00 -7.66792057e+02]
+ [ 0.00000000e+00  0.00000000e+00  0.00000000e+00  6.21037622e+02]
+ [ 0.00000000e+00  0.00000000e+00  1.92755324e-01 -0.00000000e+00]]
+```
+
+**Regiões de interesse (ROI)**
+
+```
+ROI (left): (0, 0, 0, 0)
+ROI (right): (0, 0, 0, 0)
+```
+
+**Mapa de remapeamento**
+
+```
+Left Stereo Map: (array([[[547, 255],
+        [547, 255],
+        [547, 255],
+        ...,
+        [554, 265],
+        [554, 265],
+        [554, 265]],
+
+       [[547, 255],
+        [547, 255],
+        [547, 255],
+        ...,
+        [554, 265],
+        [554, 265],
+        [554, 265]],
+
+       [[547, 255],
+        [547, 255],
+        [547, 255],
+        ...,
+        [554, 265],
+        [554, 265],
+        [554, 265]],
+
+       ...,
+```
+
+```
+Right Stereo Map: (array([[[480, 252],
+        [480, 252],
+        [480, 252],
+        ...,
+        [469, 257],
+        [469, 257],
+        [468, 257]],
+
+       [[480, 252],
+        [480, 252],
+        [480, 252],
+        ...,
+        [469, 257],
+        [469, 257],
+        [468, 257]],
+
+       [[480, 252],
+        [480, 252],
+        [480, 252],
+        ...,
+        [469, 257],
+        [469, 257],
+        [469, 257]],
+
+       ...,
+```
+
+> Os parâmetros salvos no arquivo XML de calibração foram:
+
+```python
+Left_Stereo_Map[0]
+Left_Stereo_Map[1]
+Right_Stereo_Map[0]
+Right_Stereo_Map[1]
 ```
 
 #### (D) Realize a gravação de um video 3D com sua câmera estéreo
