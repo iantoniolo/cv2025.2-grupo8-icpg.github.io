@@ -17,7 +17,7 @@
 
 ### INTRODUÇÃO
 
-TODO: escrever uma intro
+Este relatório detalha os experimentos realizados no Laboratório 3, focado no estudo e aplicação da estereoscopia em visão computacional. A estereoscopia é a técnica que permite a percepção de profundidade a partir de duas imagens capturadas de pontos de vista ligeiramente diferentes, de forma análoga à visão binocular humana. O objetivo deste trabalho foi construir e calibrar um sistema de câmera estéreo de baixo custo, utilizando duas webcams, para compreender na prática os conceitos de geometria epipolar e reconstrução 3D. Ao longo deste documento, serão descritos os procedimentos para a montagem do aparato experimental, a calibração individual e conjunta das câmeras para obtenção dos parâmetros intrínsecos e extrínsecos, e a geração de imagens anaglíficas e mapas de disparidade. A análise dos resultados demonstrará a viabilidade de se criar um sistema de percepção de profundidade e as implicações dos parâmetros de calibração na qualidade da reconstrução tridimensional.
 
 #### Objetivos:
 - Entender os conceitos de Estereoscopia e Geometria Epipolas.
@@ -282,7 +282,15 @@ Você deve obter um resultado parecido com isso:
 
 ### ANÁLISE E DISCUSSÃO DOS ESTUDOS REALIZADOS
 
+A montagem e calibração do sistema de câmera estéreo permitiram uma análise aprofundada da relação entre a teoria da geometria epipolar e sua aplicação prática. O processo de calibração, realizado com o padrão de xadrez, foi a etapa mais crítica, pois a precisão dos parâmetros intrínsecos (matriz da câmera e coeficientes de distorção) e, principalmente, dos extrínsecos (rotação `R` e translação `T` entre as câmeras) define a qualidade da reconstrução 3D. O vetor de translação `T`, em particular, estabelece a linha de base (baseline) do sistema, influenciando diretamente a sensibilidade da medição de profundidade: uma base maior tende a melhorar a acurácia para objetos distantes, enquanto uma base menor é mais adequada para cenas próximas.
+
+Após a calibração, a etapa de retificação alinhou horizontalmente as linhas epipolares das imagens esquerda e direita. Esse processo é fundamental, pois simplifica o problema de correspondência de pontos (stereo matching) a uma busca unidimensional ao longo da mesma linha de pixels. A eficácia dessa retificação foi visível na geração do mapa de disparidade. No mapa gerado, observou-se que objetos mais próximos da câmera apresentavam valores de disparidade maiores (cores mais claras), enquanto objetos distantes tinham disparidades menores (cores mais escuras), o que é consistente com o princípio da estereoscopia.
+
+No entanto, também foram identificados alguns desafios. Regiões com pouca textura, superfícies reflexivas ou áreas que são visíveis por apenas uma das câmeras resultaram em "buracos" ou ruídos no mapa de disparidade, onde o algoritmo de correspondência falhou em encontrar um par válido. A geração da imagem anaglífica, que requer o uso de óculos 3D, proporcionou uma avaliação qualitativa e intuitiva da percepção de profundidade, confirmando que o sistema foi capaz de codificar a informação tridimensional de forma eficaz, apesar das limitações observadas no mapa de disparidade.
+
 ### CONCLUSÕES
+
+Este laboratório demonstrou com sucesso a viabilidade de construir um sistema de visão estéreo funcional e de baixo custo utilizando componentes acessíveis como webcams. Os objetivos propostos foram alcançados, consolidando o entendimento prático dos conceitos de geometria epipolar, calibração de múltiplas câmeras e reconstrução 3D.
 
 ### REFERÊNCIAS CONSULTADAS E INDICADAS
 
