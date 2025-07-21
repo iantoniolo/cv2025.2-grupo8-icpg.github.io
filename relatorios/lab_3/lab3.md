@@ -209,7 +209,76 @@ cv_file = cv2.FileStorage("./data-lab/params_py.xml", cv2.FILE_STORAGE_WRITE)
 python3 calibrate.py
 ```
 
-##### (D) Realize a gravação de um video 3D com sua câmera estéreo
+#### (D) Realize a gravação de um video 3D com sua câmera estéreo
+
+Este guia explica como capturar vídeos em tempo real com câmeras estéreo, corrigir distorções nas imagens, combinar as imagens para criar um efeito 3D e gravar o resultado em um arquivo MP4.
+
+##### 1. **Configuração do Ambiente**
+
+##### 1.1. Instalação das Dependências
+
+Certifique-se de ter o OpenCV e o Numpy instalados. Se não os tiver, instale-os com o seguinte comando:
+
+```bash
+pip install opencv-python opencv-python-headless numpy
+```
+
+##### 2.1. Abrindo as Câmeras
+
+As câmeras são abertas utilizando os índices correspondentes, que podem ser números inteiros (como 0 para a câmera esquerda e 1 para a câmera direita, verifique os IDs das suas câmeras).
+
+```python
+# IDs das câmeras (substitua pelos índices corretos das suas câmeras)
+CamL_id = 0  # Câmera esquerda
+CamR_id = 1  # Câmera direita
+
+# Abrir as câmeras para captura em tempo real
+CamL = cv2.VideoCapture(CamL_id)
+CamR = cv2.VideoCapture(CamR_id)
+
+# Verificar se as câmeras foram abertas corretamente
+if not CamL.isOpened() or not CamR.isOpened():
+    print("Erro ao abrir as câmeras.")
+    exit()
+```
+
+##### 3.1. Configuração do Arquivo de Saída
+
+O arquivo de saída é configurado para salvar o vídeo 3D com o codec H264, em formato MP4. A resolução do vídeo de saída é definida pela resolução das câmeras.
+
+```python
+# Tamanho do quadro das câmeras
+frame_width = int(CamL.get(cv2.CAP_PROP_FRAME_WIDTH))
+frame_height = int(CamL.get(cv2.CAP_PROP_FRAME_HEIGHT))
+
+# Definir codec e arquivo de saída
+fourcc = cv2.VideoWriter_fourcc(*'mp4v')  # Codec H264
+out = cv2.VideoWriter('./video3d_output.mp4', fourcc, 30.0, (frame_width, frame_height))
+```
+
+Este código configura o arquivo de saída onde o vídeo 3D será salvo.
+
+##### 5. Execução do Arquivo
+
+Para rodar o script:
+
+    Salve o código em um arquivo Python, como capture_3d_video.py.
+
+    Execute o script no terminal:
+
+```python
+python capture_3d_video.py
+```
+
+O script abrirá as câmeras em tempo real, aplicará a correção de distorção, criará o efeito 3D, exibirá o vídeo 3D e gravará o resultado no arquivo video3d_output.mp4.
+
+##### Resultado
+
+Você deve obter um resultado parecido com isso:
+
+<video width="320" height="320" controls>
+    <source src="./stereo-camera/3d_output_video.mp4" type="video/mp4">
+</video>
 
 ### ANÁLISE E DISCUSSÃO DOS ESTUDOS REALIZADOS
 
