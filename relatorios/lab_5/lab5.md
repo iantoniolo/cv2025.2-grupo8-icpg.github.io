@@ -67,8 +67,7 @@ Execute-o com `python3 feature_matching.py`. Você deve obter um resultado simil
 
 <img src="parte_2/result.png">
 
-## B) Elaborar outro programa OpenCV, modificando o codigo acima, para fazer a leitura de duas
-webcams da camera estereoscópica calibrada, mostrando o resultado em video.
+## B) Elaborar outro programa OpenCV, modificando o codigo acima, para fazer a leitura de duas webcams da camera estereoscópica calibrada, mostrando o resultado em video.
 
 ## Análise e discussão dos estudos realizados
 
