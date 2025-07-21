@@ -17,6 +17,7 @@
 
 ### INTRODUÇÃO
 
+Este relatório detalha os experimentos realizados no Laboratório 3, focado no estudo e aplicação da estereoscopia em visão computacional. A estereoscopia é a técnica que permite a percepção de profundidade a partir de duas imagens capturadas de pontos de vista ligeiramente diferentes, de forma análoga à visão binocular humana. O objetivo deste trabalho foi construir e calibrar um sistema de câmera estéreo de baixo custo, utilizando duas webcams, para compreender na prática os conceitos de geometria epipolar e reconstrução 3D. Ao longo deste documento, serão descritos os procedimentos para a montagem do aparato experimental, a calibração individual e conjunta das câmeras para obtenção dos parâmetros intrínsecos e extrínsecos, e a geração de imagens anaglíficas e mapas de disparidade. A análise dos resultados demonstrará a viabilidade de se criar um sistema de percepção de profundidade e as implicações dos parâmetros de calibração na qualidade da reconstrução tridimensional.
 Este relatório detalha os experimentos realizados no Laboratório 3 (Câmera Estéreo), focado no estudo e aplicação da estereoscopia em visão computacional. A estereoscopia é a técnica que permite a percepção de profundidade a partir de duas imagens capturadas de pontos de vista ligeiramente diferentes, de forma análoga à visão humana. O objetivo deste trabalho foi construir e calibrar um sistema de câmera estéreo de baixo custo, utilizando duas webcams providas em laboratório, para compreender na prática os conceitos de geometria epipolar e reconstrução 3D. Ao longo deste documento, serão descritos os procedimentos para a montagem do aparato experimental, a calibração individual e conjunta das câmeras para obtenção dos parâmetros intrínsecos e extrínsecos, e a geração de imagens. A análise dos resultados demonstrará a viabilidade de se criar um sistema de percepção de profundidade e as implicações dos parâmetros de calibração na qualidade da reconstrução tridimensional.
 
 #### Objetivos:
@@ -528,11 +529,89 @@ Right_Stereo_Map[0]
 Right_Stereo_Map[1]
 ```
 
-##### (D) Realize a gravação de um video 3D com sua câmera estéreo
+#### (D) Realize a gravação de um video 3D com sua câmera estéreo
+
+Este guia explica como capturar vídeos em tempo real com câmeras estéreo, corrigir distorções nas imagens, combinar as imagens para criar um efeito 3D e gravar o resultado em um arquivo MP4.
+
+##### 1. **Configuração do Ambiente**
+
+##### 1.1. Instalação das Dependências
+
+Certifique-se de ter o OpenCV e o Numpy instalados. Se não os tiver, instale-os com o seguinte comando:
+
+```bash
+pip install opencv-python opencv-python-headless numpy
+```
+
+##### 2.1. Abrindo as Câmeras
+
+As câmeras são abertas utilizando os índices correspondentes, que podem ser números inteiros (como 0 para a câmera esquerda e 1 para a câmera direita, verifique os IDs das suas câmeras).
+
+```python
+# IDs das câmeras (substitua pelos índices corretos das suas câmeras)
+CamL_id = 0  # Câmera esquerda
+CamR_id = 1  # Câmera direita
+
+# Abrir as câmeras para captura em tempo real
+CamL = cv2.VideoCapture(CamL_id)
+CamR = cv2.VideoCapture(CamR_id)
+
+# Verificar se as câmeras foram abertas corretamente
+if not CamL.isOpened() or not CamR.isOpened():
+    print("Erro ao abrir as câmeras.")
+    exit()
+```
+
+##### 3.1. Configuração do Arquivo de Saída
+
+O arquivo de saída é configurado para salvar o vídeo 3D com o codec H264, em formato MP4. A resolução do vídeo de saída é definida pela resolução das câmeras.
+
+```python
+# Tamanho do quadro das câmeras
+frame_width = int(CamL.get(cv2.CAP_PROP_FRAME_WIDTH))
+frame_height = int(CamL.get(cv2.CAP_PROP_FRAME_HEIGHT))
+
+# Definir codec e arquivo de saída
+fourcc = cv2.VideoWriter_fourcc(*'mp4v')  # Codec H264
+out = cv2.VideoWriter('./video3d_output.mp4', fourcc, 30.0, (frame_width, frame_height))
+```
+
+Este código configura o arquivo de saída onde o vídeo 3D será salvo.
+
+##### 5. Execução do Arquivo
+
+Para rodar o script:
+
+    Salve o código em um arquivo Python, como capture_3d_video.py.
+
+    Execute o script no terminal:
+
+```python
+python capture_3d_video.py
+```
+
+O script abrirá as câmeras em tempo real, aplicará a correção de distorção, criará o efeito 3D, exibirá o vídeo 3D e gravará o resultado no arquivo video3d_output.mp4.
+
+##### Resultado
+
+Você deve obter um resultado parecido com isso:
+
+<video width="700" height="700" controls>
+    <source src="stereo-camera/3d_output_video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
 
 ### ANÁLISE E DISCUSSÃO DOS ESTUDOS REALIZADOS
 
+A montagem e calibração do sistema de câmera estéreo permitiram uma análise aprofundada da relação entre a teoria da geometria epipolar e sua aplicação prática. O processo de calibração, realizado com o padrão de xadrez, foi a etapa mais crítica, pois a precisão dos parâmetros intrínsecos (matriz da câmera e coeficientes de distorção) e, principalmente, dos extrínsecos (rotação `R` e translação `T` entre as câmeras) define a qualidade da reconstrução 3D. O vetor de translação `T`, em particular, estabelece a linha de base (baseline) do sistema, influenciando diretamente a sensibilidade da medição de profundidade: uma base maior tende a melhorar a acurácia para objetos distantes, enquanto uma base menor é mais adequada para cenas próximas.
+
+Após a calibração, a etapa de retificação alinhou horizontalmente as linhas epipolares das imagens esquerda e direita. Esse processo é fundamental, pois simplifica o problema de correspondência de pontos (stereo matching) a uma busca unidimensional ao longo da mesma linha de pixels. A eficácia dessa retificação foi visível na geração do mapa de disparidade. No mapa gerado, observou-se que objetos mais próximos da câmera apresentavam valores de disparidade maiores (cores mais claras), enquanto objetos distantes tinham disparidades menores (cores mais escuras), o que é consistente com o princípio da estereoscopia.
+
+No entanto, também foram identificados alguns desafios. Regiões com pouca textura, superfícies reflexivas ou áreas que são visíveis por apenas uma das câmeras resultaram em "buracos" ou ruídos no mapa de disparidade, onde o algoritmo de correspondência falhou em encontrar um par válido. A geração da imagem anaglífica, que requer o uso de óculos 3D, proporcionou uma avaliação qualitativa e intuitiva da percepção de profundidade, confirmando que o sistema foi capaz de codificar a informação tridimensional de forma eficaz, apesar das limitações observadas no mapa de disparidade.
+
 ### CONCLUSÕES
+
+Este laboratório demonstrou com sucesso a viabilidade de construir um sistema de visão estéreo funcional e de baixo custo utilizando componentes acessíveis como webcams. Os objetivos propostos foram alcançados, consolidando o entendimento prático dos conceitos de geometria epipolar, calibração de múltiplas câmeras e reconstrução 3D.
 
 ### REFERÊNCIAS CONSULTADAS E INDICADAS
 
