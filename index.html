@@ -71,6 +71,7 @@
             display: flex;
             gap: 18px;
             list-style: none;
+            margin: 0;
         }
 
         .nav-links a {
@@ -224,11 +225,15 @@
         .rodape {
             text-align: center;
             padding: 24px 0 18px 0;
-            color: var(--gray);
+            color: white;
             font-size: 0.98em;
             border-top: 1px solid var(--border);
-            background: var(--white);
+            background: #00420c;
             margin-top: auto;
+        }
+
+        #apresentacao > div {
+            margin-bottom: 24px;
         }
 
         @media (max-width: 700px) {
@@ -334,38 +339,45 @@
     <main class="container">
 
         <section id="apresentacao" class="content-section">
-            <h2>Sobre o Grupo</h2>
-            <p>
+            <div>
+                <h2>Sobre o Grupo</h2>
+                <p>
                 Bem-vindo à página do Grupo 8 - ICPG! Somos uma equipe de estudantes do quadrimestre 2025.2
                 da disciplina de Visão Computacional da Universidade Federal do ABC (UFABC). Neste espaço,
                 compartilhamos nossos trabalhos, relatórios e atividades desenvolvidas ao longo do curso.
-            </p>
-            <h3>Membros da Equipe</h3>
-            <ul>
-                <li><strong>Ian Victor Toniolo Silva</strong> - 11202020351</li>
-                <li><strong>Cesar Seiji Maruyama</strong> - 11127015</li>
-                <li><strong>Pedro Henrique Cardoso Silva</strong> - 11202021250</li>
-                <li><strong>Guilherme de Sousa Santos</strong> - 11201921175</li>
-            </ul>
+                </p>
+            </div>
+            <div>
+                <h3>Membros da Equipe</h3>
+                <ul>
+                    <li><strong>Ian Victor Toniolo Silva</strong> - 11202020351</li>
+                    <li><strong>Cesar Seiji Maruyama</strong> - 11127015</li>
+                    <li><strong>Pedro Henrique Cardoso Silva</strong> - 11202021250</li>
+                    <li><strong>Guilherme de Sousa Santos</strong> - 11201921175</li>
+                </ul>
+            </div>
             <h3>Documentos e Recursos</h3>
-            <h4>Página de membros</h4>
-            <ul>
-                <li><a href="membros/ian.html">Página do Ian Victor Toniolo Silva</a></li>
-                <li><a href="membros/guilherme/index.html">Página do Guilherme de Sousa Santos</a></li>
-                <li><a href="membros/cesar.html">Página do Cesar Seiji Maruyama</a></li>
-                <li><a href="membros/pedro/index.html">Página do Pedro Henrique Cardoso Silva</a></li>
-            </ul>
-
-            <h4>Relatórios e trabalhos</h4>
-            <ul>
-                <li><a href="relatorios/index.html">Índice de Relatórios</a></li>
-                <li><a href="trabalhos/index.html">Índice de Trabalhos</a></li>
-            </ul>
+            <div>
+                <h4>Página de membros</h4>
+                <ul>
+                    <li><a href="membros/ian.html">Página do Ian Victor Toniolo Silva</a></li>
+                    <li><a href="membros/guilherme/index.html">Página do Guilherme de Sousa Santos</a></li>
+                    <li><a href="membros/cesar.html">Página do Cesar Seiji Maruyama</a></li>
+                    <li><a href="membros/pedro/index.html">Página do Pedro Henrique Cardoso Silva</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Relatórios e trabalhos</h4>
+                <ul>
+                    <li><a href="relatorios/index.html">Índice de Relatórios</a></li>
+                    <li><a href="https://guilhermedesousa.github.io/cv2025.2-grupo8-icpg-trab.github.io">Página do Trabalho</a></li>
+                </ul>
+            </div>
         </section>
     </main>
     <footer class="rodape">
         &copy; 2025 Grupo 8 - ICPG | Visão Computacional - UFABC<br>
-        <img src="https://www.ufabc.edu.br/images/identidade-visual/ufabc-logo-horizontal-cor.png" alt="UFABC Logo"
+        <img src="https://www.ufabc.edu.br/images/conteudo/logo2.png" alt="UFABC Logo"
             height="32" style="margin-top:10px;">
     </footer>
 </body>

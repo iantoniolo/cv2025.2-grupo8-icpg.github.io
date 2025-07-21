@@ -1,70 +1,56 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="smooth-scroll">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Relatório – Lab 2</title>
-
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Índice de Relatórios - Grupo 8 - ICPG</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
-      main{
-        max-width:48rem;
-        margin:0 auto;
-        padding:2rem 1rem 6rem;
-      }
-      .markdown-body{
-        margin-left:auto;
-        margin-right:auto;
-        color-scheme:light;
-      }
-
-      
-      #toTop{
-        position:fixed;
-        bottom:1.25rem;
-        right:1.25rem;
-        display:none;
-        padding:.5rem .8rem;
-        font-size:1rem;
-        border:none;
-        border-radius:.5rem;
-        background:#4b5563;
-        color:#fff;
-        cursor:pointer;
-        box-shadow:0 2px 6px rgba(0,0,0,.3);
-        transition:opacity .2s ease-in-out;
-      }
-      #toTop:hover{opacity:.85;}
-
-      html.smooth-scroll{scroll-behavior:smooth;}
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f6fa;
+            color: #111827;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #2563eb;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+        a {
+            text-decoration: none;
+            color: #2563eb;
+            transition: color 0.2s;
+        }
+        a:hover {
+            color: #e11d48;
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #6b7280;
+        }
     </style>
-  </head>
-
-  <body>
-    <main class="markdown-body" id="post">
-      <p>Carregando&nbsp;artigo…</p>
-    </main>
-
-    <button id="toTop" aria-label="Voltar ao topo">▲</button>
-
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
-
-    <script>
-      fetch('lab2.md')
-        .then(r=>{if(!r.ok)throw Error('lab2.md não encontrado');return r.text();})
-        .then(md=>{
-          document.getElementById('post').innerHTML=
-            marked.parse(md,{mangle:false,headerIds:false});
-          hljs.highlightAll();
-        })
-        .catch(err=>{
-          document.getElementById('post').innerHTML=
-            '<p style="color:red;">'+err.message+'</p>';
-        });
-
-      const btn=document.getElementById('toTop');
-      addEventListener('scroll',()=>btn.style.display=scrollY>200?'block':'none');
-      btn.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
-    </script>
-  </body>
+</head>
+<body>
+    <h1>Índice de Relatórios</h1>
+    <p>Bem-vindo ao índice de relatórios do Grupo 8 - ICPG. Aqui você encontrará uma lista dos relatórios desenvolvidos ao longo do curso de Visão Computacional.</p>
+    <ul>
+        <li><a href="lab_1/lab1.html">Laboratório 1: Captura de Imagem e Vídeo</a></li>
+        <li><a href="lab_2/index.html">Laboratório 2: Calibração de Cameras</a></li>
+        <li><a href="lab_3/index.html">Laboratório 3: Camera Estéreo</a></li>
+        <li><a href="lab_4/index.html">Laboratório 4: Análise de Vídeo</a></li>
+        <li><a href="lab_5/index.html">Laboratório 5: Projeto Final</a></li>
+    </ul>
+    <footer>
+        &copy; 2025 Grupo 8 - ICPG | Visão Computacional - UFABC
+    </footer>
+</body>
 </html>

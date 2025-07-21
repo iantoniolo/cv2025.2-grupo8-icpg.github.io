@@ -1,1 +1,114 @@
-<html>Loading...</html>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etapa 2 | Grupo 8 - ICPG</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style> :root { --primary: #2563eb; --secondary: #111827; --accent: #e11d48; --bg: #f5f6fa; --white: #fff; --gray: #6b7280; --border: #e5e7eb; --radius: 8px; --shadow: 0 2px 8px rgba(0, 0, 0, 0.04); --transition: 0.2s; } * { box-sizing: border-box; margin: 0; padding: 0; } html, body { background: var(--bg); color: var(--secondary); font-family: 'Roboto', sans-serif; font-size: 17px; line-height: 1.6; min-height: 100vh; } body { display: flex; flex-direction: column; min-height: 100vh; } main.container { max-width: 900px; margin: 0 auto; background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); padding: 36px 24px 24px 24px; margin-bottom: 32px; margin-top: 24px; } section { margin-bottom: 36px; } h2 { font-size: 1.4rem; font-weight: 600; color: var(--primary); margin-bottom: 18px; letter-spacing: 0.2px; } h3 { font-size: 1.1rem; font-weight: 500; color: var(--secondary); margin-bottom: 12px; } h4 { font-size: 1rem; font-weight: 500; color: var(--primary); margin-bottom: 8px; } ul { margin-left: 18px; margin-bottom: 12px; } li { margin-bottom: 6px; } .entrevista, .cenario, .requisitos, .referencias, .section { background: #f3f4f6; padding: 18px 14px; border-radius: var(--radius); margin-bottom: 18px; } table { width: 100%; border-collapse: collapse; margin-bottom: 18px; } th, td { padding: 8px 10px; border: 1px solid var(--border); text-align: left; } th { background: var(--primary); color: var(--white); } tr:nth-child(even) { background: #f9fafb; } tr:nth-child(odd) { background: #f3f4f6; } footer.rodape { text-align: center; padding: 24px 0 18px 0; color: var(--gray); font-size: 0.98em; border-top: 1px solid var(--border); background: var(--white); margin-top: auto; } @media (max-width: 700px) { main.container { padding-left: 8px; padding-right: 8px; } main.container { padding: 18px 6px 12px 6px; } h2 { font-size: 1.1rem; } h3 { font-size: 1rem; } .entrevista, .cenario, .requisitos, .referencias, .section { padding: 12px 7px; } } </style>
+</head>
+<body>
+<main class="container">
+    <section id="trabalho" class="content-section">
+        <h2>Etapa 2: Modelagem Funcional do Sistema (MF)</h2>
+        <p>No documento de modelagem funcional, detalhamos a concepção dos dois sistemas propostos: <b>Contagem Automática de Pessoas</b> e <b>Leitura Automática de Placas de Veículos</b>. Abaixo estão descritos os blocos funcionais, fluxos de dados e tabelas que esclarecem o funcionamento de cada parte do sistema.</p>
+        
+        <section class="sistema">
+            <h3>1. Sistema de Contagem Automática de Pessoas</h3>
+            <h4>Diagrama de Blocos</h4>
+            <img src="people-diagram.jpg" alt="Diagrama de Blocos - Contagem de Pessoas" style="max-width:100%;height:auto;">
+
+            <h4>Descrição dos Blocos</h4>
+            <table border="1" cellpadding="5" style="border-collapse: collapse;">
+                <tr>
+                    <th>Bloco</th>
+                    <th>Entrada</th>
+                    <th>Processamento</th>
+                    <th>Saída</th>
+                </tr>
+                <tr>
+                    <td>Câmera</td>
+                    <td>Ambiente real</td>
+                    <td>Captura de vídeo em tempo real</td>
+                    <td>Frames de vídeo</td>
+                </tr>
+                <tr>
+                    <td>Captura de Imagem</td>
+                    <td>Frames de vídeo</td>
+                    <td>Leitura dos frames para processamento</td>
+                    <td>Imagem/frame individual</td>
+                </tr>
+                <tr>
+                    <td>Detecção de Pessoas (OpenCV)</td>
+                    <td>Imagem/frame</td>
+                    <td>Processamento com modelo de detecção de pessoas</td>
+                    <td>Lista de pessoas detectadas</td>
+                </tr>
+                <tr>
+                    <td>Contador de Pessoas</td>
+                    <td>Lista de pessoas detectadas</td>
+                    <td>Contagem dos objetos/pessoas</td>
+                    <td>Número total de pessoas</td>
+                </tr>
+                <tr>
+                    <td>Exibição do Resultado</td>
+                    <td>Número total de pessoas</td>
+                    <td>Apresentação visual (tela, dashboard, etc.)</td>
+                    <td>Informação exibida ao usuário</td>
+                </tr>
+            </table>
+        </section>
+        <hr>
+        <section class="sistema">
+            <h3>2. Sistema de Leitura Automática de Placas de Veículos</h3>
+            <h4>Diagrama de Blocos</h4>
+            <img src="car-plate-diagram.jpg" alt="Diagrama de Blocos - Contagem de Pessoas" style="max-width:100%;height:auto;">
+
+            <h4>Descrição dos Blocos</h4>
+            <table border="1" cellpadding="5" style="border-collapse: collapse;">
+                <tr>
+                    <th>Bloco</th>
+                    <th>Entrada</th>
+                    <th>Processamento</th>
+                    <th>Saída</th>
+                </tr>
+                <tr>
+                    <td>Câmera</td>
+                    <td>Veículo passando</td>
+                    <td>Captura de vídeo/imagem</td>
+                    <td>Frames de vídeo</td>
+                </tr>
+                <tr>
+                    <td>Captura de Imagem</td>
+                    <td>Frames de vídeo</td>
+                    <td>Leitura dos frames</td>
+                    <td>Imagem/frame individual</td>
+                </tr>
+                <tr>
+                    <td>Detecção de Placa (OpenCV)</td>
+                    <td>Imagem/frame</td>
+                    <td>Localização da placa no frame</td>
+                    <td>Imagem da placa recortada</td>
+                </tr>
+                <tr>
+                    <td>Reconhecimento de Caracteres (OCR)</td>
+                    <td>Imagem da placa</td>
+                    <td>Reconhecimento dos caracteres (ex: pytesseract)</td>
+                    <td>Texto da placa</td>
+                </tr>
+                <tr>
+                    <td>Registro/Exibição do Resultado</td>
+                    <td>Texto da placa</td>
+                    <td>Armazenamento ou exibição ao usuário</td>
+                    <td>Informação registrada/exibida</td>
+                </tr>
+            </table>
+        </section>
+    </section>
+</main>
+<footer class="rodape">
+    &copy; 2025 Grupo 8 - ICPG | Visão Computacional - UFABC<br>
+    <img src="https://www.ufabc.edu.br/images/identidade-visual/ufabc-logo-horizontal-cor.png" alt="UFABC Logo" height="32" style="margin-top:10px;">
+</footer>
+</body>
+</html>

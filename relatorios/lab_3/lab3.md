@@ -46,11 +46,14 @@ iv. No relatório descreva os procedimentos com o máximo de detalhes, de forma 
 
 #### PARTE 3: Executar passo a passo as etapas do exemplo de calibração de uma câmera estereoscópica e geração de imagem 3D.
 
-(A) Obtenção dos códigos do exemplo da câmera estéreo com OpenCV: Nesta pagina clique no botao “download code” e salve o arquivo numa pasta com seu nome: <https://github.com/spmallick/learnopencv tree/master/stereo-camera>
-OBS: ao final da aula no laboratorio apague todos arquivos baixados no computador.
-Observe que há tres codigos em python.
+##### (A) Obtenção dos códigos do exemplo da câmera estéreo com OpenCV
 
-(B) Execute o exemplo com as imagens fornecidas:
+Para executar os procedimentos, baixe o seguinte código de exemplo: https://github.com/spmallick/learnopencv/tree/master/stereo-camera
+
+##### (B) Execute o exemplo com as imagens fornecidas:
+
+A calibração de câmeras consiste em estimar os parâmetros intrínsecos e extrínsecos de uma ou mais câmeras com base em imagens de um padrão conhecido, como um tabuleiro de xadrez. A calibração é essencial para corrigir distorções nas imagens capturadas pela câmera, além de ajudar a determinar as relações espaciais entre as câmeras em um sistema estéreo como o utilizado em laboratório.
+
 - Calibração estéreo:
 ```shell
 python3 calibrate.py
@@ -148,17 +151,30 @@ Right_Stereo_Map= cv2.initUndistortRectifyMap(new_mtxR, distR, rect_r, proj_mat_
 
 > Esses mapas contêm coordenadas de onde cada pixel de saída deve ser amostrado na imagem original.
 
-### ANÁLISE E DISCUSSÃO DOS ESTUDOS REALIZADOS
+##### (C) Execute a Calibração da sua câmera estéreo (construída com as webcams) pela captura de suas próprias imagens de calibração e imagens de teste
 
+##### (D) Realize a gravação de um video 3D com sua câmera estéreo
+
+### ANÁLISE E DISCUSSÃO DOS ESTUDOS REALIZADOS
 
 ### CONCLUSÕES
 
-
-
-
 ### REFERÊNCIAS CONSULTADAS E INDICADAS
 
-- Introduction to Epipolar Geometry and Stereo Vision:
-<https://learnopencv.com/introduction-to-epipolar-geometry-and-stereo-vision//>.
-- Making A Low-Cost Stereo Camera Using OpenCV:
-<https://learnopencv.com/making-a-low-cost-stereo-camera-using-opencv//>
+- [1] Making A Low-Cost Stereo Camera Using OpenCV:
+<https://learnopencv.com/making-a-low-cost-stereo-camera-using-opencv/>
+Código: <https://github.com/spmallick/learnopencv/tree/master/stereo-camera>
+- [2] Introduction to Epipolar Geometry and Stereo Vision:
+<https://learnopencv.com/introduction-to-epipolar-geometry-and-stereo-vision/>
+Código:
+<https://github.com/spmallick/learnopencv/tree/master/EpipolarGeometryAndSter
+eoVision>
+- [3] Understanding Lens Distortion:
+<https://learnopencv.com/understanding-lens-distortion/>
+Código:
+<https://github.com/spmallick/learnopencv/tree/master/UnderstandingLensDistort
+ion>
+- [4] C. Loop and Z. Zhang. Computing Rectifying Homographies for Stereo Vision.
+IEEE Conf. Computer Vision and Pattern Recognition, 1999.
+- [5] Geometry of Image Formation:
+<https://learnopencv.com/geometry-of-image-formation/>
