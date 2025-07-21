@@ -153,6 +153,62 @@ Right_Stereo_Map= cv2.initUndistortRectifyMap(new_mtxR, distR, rect_r, proj_mat_
 
 ##### (C) Execute a Calibração da sua câmera estéreo (construída com as webcams) pela captura de suas próprias imagens de calibração e imagens de teste
 
+> Para capturar as imagens de calibração, utilizamos um padrão de tabuleiro de xadrez (9,7) disponibilizado no laboratório. As imagens foram capturadas com as duas câmeras simultaneamente, garantindo que ambas estivessem alinhadas e fixas.
+>
+> Primeiro, altere os índices das câmeras no código para corresponder às webcams utilizadas. Em nosso caso, as câmeras foram identificadas como `CamL_id = 2` e `CamR_id = 4`. Certifique-se de que as câmeras estejam conectadas e reconhecidas pelo sistema:
+
+```python
+# Check for left and right camera IDs
+CamL_id = 2
+CamR_id = 4
+```
+
+> Configure também o caminho para salvar as imagens capturadas:
+
+```python
+output_path = "./data-lab/"
+```
+
+> Em seguida, execute o script `capture_images.py` para capturar entre 10 e 15 imagens de calibração. O script irá abrir uma janela de visualização onde você deve posicionar o padrão de tabuleiro de xadrez em frente às câmeras. O script realizará a captura automaticamente a cada 10 segundos. Certifique-se de que o fundo esteja bem iluminado e visível para ambas as câmeras.
+
+```shell
+python3 capture_images.py
+```
+
+> Após capturar as imagens, verifique se as imagens foram salvas corretamente no diretório especificado. As imagens das câmeras esquerda e direita devem estar nas respectivas pastas `stereoL` e `stereoR` dentro do diretório `data-lab`. As imagens devem ser nomeadas de forma numérica (por exemplo, `img1.jpg`, `img2.jpg`, etc.).
+>
+> Agora, acesse o script `calibrate.py` para alterar o valor de algumas variáveis. Primeiro, altere o caminho para as imagens capturadas:
+
+```python
+# Set the path to the images captured by the left and right cameras
+pathL = "./data-lab/stereoL/"
+pathR = "./data-lab/stereoR/"
+```
+
+> Em seguida, ajuste os parâmetros de calibração, como o tamanho do tabuleiro de xadrez e o número de imagens a serem processadas:
+
+```python
+objp = np.zeros((8*6,3), np.float32)
+objp[:,:2] = np.mgrid[0:8,0:6].T.reshape(-1,2)
+```
+
+```python
+retR, cornersR =  cv2.findChessboardCorners(outputR,(8,6),None)
+retL, cornersL = cv2.findChessboardCorners(outputL,(8,6),None)
+```
+
+> Ajuste também o caminho para salvar os resultados da calibração:
+
+```python
+cv_file = cv2.FileStorage("./data-lab/params_py.xml", cv2.FILE_STORAGE_WRITE)
+```
+
+> Execute o script `calibrate.py` para realizar a calibração das câmeras estéreo. O script irá processar as imagens capturadas, calcular os parâmetros intrínsecos e extrínsecos, e salvar os resultados em um arquivo XML.
+
+```shell
+python3 calibrate.py
+```
+
 ##### (D) Realize a gravação de um video 3D com sua câmera estéreo
 
 ### ANÁLISE E DISCUSSÃO DOS ESTUDOS REALIZADOS
