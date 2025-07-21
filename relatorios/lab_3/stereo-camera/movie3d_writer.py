@@ -17,8 +17,8 @@ Right_Stereo_Map_x = cv_file.getNode("Right_Stereo_Map_x").mat()
 Right_Stereo_Map_y = cv_file.getNode("Right_Stereo_Map_y").mat()
 cv_file.release()
 
-output_video = cv2.VideoWriter('3d_output_video.mp4', 
-                               cv2.VideoWriter_fourcc(*'mp4v'),
+output_video = cv2.VideoWriter('3d_output_video.avi', 
+                               cv2.VideoWriter_fourcc(*'MJPG'),
                                30, 
                                (700, 700))
 

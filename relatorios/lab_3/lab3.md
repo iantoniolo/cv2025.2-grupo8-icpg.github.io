@@ -277,7 +277,7 @@ O script abrirá as câmeras em tempo real, aplicará a correção de distorçã
 Você deve obter um resultado parecido com isso:
 
 <video width="700" height="700" controls>
-    <source src="stereo-camera/3d_output_video.mp4" type="video/mp4">
+    <source src="stereo-camera/3d_output_video.avi" type="video/mp4">
     Your browser does not support the video tag.
 </video>
 
