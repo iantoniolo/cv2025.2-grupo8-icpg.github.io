@@ -9,7 +9,7 @@ CamL= cv2.VideoCapture(CamL_id)
 CamR= cv2.VideoCapture(CamR_id)
 
 print("Reading parameters ......")
-cv_file = cv2.FileStorage("data-lab/params_py.xml", cv2.FILE_STORAGE_READ)
+cv_file = cv2.FileStorage("improved_params2.xml", cv2.FILE_STORAGE_READ)
 
 Left_Stereo_Map_x = cv_file.getNode("Left_Stereo_Map_x").mat()
 Left_Stereo_Map_y = cv_file.getNode("Left_Stereo_Map_y").mat()
