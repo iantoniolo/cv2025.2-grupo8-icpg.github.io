@@ -2,6 +2,24 @@ import numpy as np
 import cv2 as cv
 from matplotlib import pyplot as plt
 
+# Função para detectar câmeras disponíveis
+def detect_cameras():
+    available_cameras = []
+    for i in range(10):  # Tentando até 10 câmeras
+        cap = cv.VideoCapture(i)
+        if cap.isOpened():
+            available_cameras.append(i)
+            cap.release()  # Liberando a câmera após a detecção
+    return available_cameras
+
+# Detectar câmeras disponíveis
+# available_cameras = detect_cameras()
+# if len(available_cameras) < 2:
+#     print("Erro: Duas câmeras não estão disponíveis.")
+#     exit()
+# else:
+#     print(f"Câmeras detectadas: {available_cameras}")
+
 MIN_MATCH_COUNT = 10  # Número mínimo de correspondências para encontrar o objeto
 
 # Inicializar o SIFT
@@ -13,8 +31,8 @@ index_params = dict(algorithm=FLANN_INDEX_KDTREE, trees=5)
 search_params = dict(checks=50)
 
 # Inicializar as duas webcams (esquerda e direita)
-cap_left = cv.VideoCapture(0)  # Webcam esquerda
-cap_right = cv.VideoCapture(1)  # Webcam direita
+cap_left = cv.VideoCapture(0)  # Primeira câmera disponível
+cap_right = cv.VideoCapture(2)  # Segunda câmera disponível
 
 if not cap_left.isOpened() or not cap_right.isOpened():
     print("Erro ao abrir as webcams.")
