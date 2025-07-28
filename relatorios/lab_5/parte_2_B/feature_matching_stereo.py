@@ -13,12 +13,12 @@ def detect_cameras():
     return available_cameras
 
 # Detectar câmeras disponíveis
-# available_cameras = detect_cameras()
-# if len(available_cameras) < 2:
-#     print("Erro: Duas câmeras não estão disponíveis.")
-#     exit()
-# else:
-#     print(f"Câmeras detectadas: {available_cameras}")
+available_cameras = detect_cameras()
+if len(available_cameras) < 2:
+    print("Erro: Duas câmeras não estão disponíveis.")
+    exit()
+else:
+    print(f"Câmeras detectadas: {available_cameras}")
 
 MIN_MATCH_COUNT = 10  # Número mínimo de correspondências para encontrar o objeto
 
