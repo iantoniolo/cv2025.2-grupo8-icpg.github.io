@@ -6,7 +6,7 @@
 
   <meta name="color-scheme" content="light">
 
-  <title>Relatório – Lab 3</title>
+  <title>Relatório – Lab 4</title>
 
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.8.1/github-markdown-light.min.css" />
@@ -62,7 +62,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
   <script>
     fetch('lab4.md')
-      .then(r => { if(!r.ok) throw Error('lab2.md não encontrado'); return r.text(); })
+      .then(r => { if(!r.ok) throw Error('lab4.md não encontrado'); return r.text(); })
       .then(md => {
         document.getElementById('post').innerHTML =
           marked.parse(md, { mangle:false, headerIds:false });
